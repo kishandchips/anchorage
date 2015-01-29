@@ -1,6 +1,12 @@
 // ==========================================================================
 // Button Styles
 // ==========================================================================
+button{
+	padding: 0;
+	background: none;
+	border: none;
+	outline: none;
+}
 
 .button{
 	@include border-radius(5px);

@@ -33,7 +33,7 @@ $template_directory_uri = get_template_directory_uri();
 function custom_styles(){
 	global $template_directory_uri;
 
-	wp_enqueue_style('fonts', '' );
+	wp_enqueue_style('fonts', 'http://fast.fonts.net/cssapi/3572e405-0209-478c-af7b-f4d6cd97e433.css' );
 	wp_enqueue_style('main', $template_directory_uri . '/css/main.css');
 }
 

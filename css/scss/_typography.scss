@@ -3,5 +3,12 @@
 // ==========================================================================
 
 body{
-	font-size: 100%;
+	font-size: 125%;
+	font-family:'Aktiv Grotesk W01';
+}
+
+a{
+	color: $red;
+	text-decoration: none;
+	@include transition(all,.3s);
 }

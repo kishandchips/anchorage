@@ -1,3 +1,5 @@
+</main><!-- #ludacris -->
+
 <footer id="footer">
 
 </footer><!-- #footer -->

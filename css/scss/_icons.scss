@@ -4,11 +4,11 @@
 
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?8cl8wz');
-	src:url('fonts/icomoon.eot?#iefix8cl8wz') format('embedded-opentype'),
-		url('fonts/icomoon.woff?8cl8wz') format('woff'),
-		url('fonts/icomoon.ttf?8cl8wz') format('truetype'),
-		url('fonts/icomoon.svg?8cl8wz#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-ja3gbm');
+	src:url('fonts/icomoon.eot?#iefix-ja3gbm') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-ja3gbm') format('woff'),
+		url('fonts/icomoon.ttf?-ja3gbm') format('truetype'),
+		url('fonts/icomoon.svg?-ja3gbm#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -27,6 +27,22 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-menu:before {
+	content: "\e603";
+}
+
+.icon-mail:before {
+	content: "\e602";
+}
+
+.icon-facebook:before {
+	content: "\e601";
+}
+
+.icon-twitter:before {
+	content: "\e600";
+}
+
 .icon-arrow-right:before {
 	content: "\ea3c";
 }
@@ -35,11 +51,4 @@
 	content: "\ea3e";
 }
 
-.icon-circle-down:before {
-	content: "\ea43";
-}
-
-.icon-circle-left:before {
-	content: "\ea44";
-}
 

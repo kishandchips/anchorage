@@ -1,3 +1,197 @@
 /* ==========================================================================
    Generic Page Styles
    ========================================================================== */
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+#header{
+
+	&.menu-visible{
+		nav{
+			@include device-width(950px){
+				max-height: 1000px;	
+			}
+		}
+	}// .menu-visible
+
+	.container{
+		padding: 1em 0;
+
+		@include device-width(950px){
+			width: 100%;
+			padding: 1em;
+		}
+	}// .container
+
+	.home &{
+		background-color: rgba(#000, 0.2);
+
+		.logo a{
+			background-image: url(../images/logo-w.png);
+		}
+
+		nav{
+			a{
+				color: #fff;
+
+				&:hover{
+					border-bottom: 3px solid #fff;
+				}
+			}
+
+			@include device-width(950px){
+				background-color: rgba(#000, 0.2);
+			}		
+		}
+
+		#menu-toggle{
+			color: #fff;
+		}
+	}// body.home #header
+
+	.logo{
+		float: left;
+		
+		a{
+			display: inline-block;
+			width: 249px;
+			height:65px;
+			background-image: url(../images/logo-b.png);
+			background-repeat: no-repeat;
+
+			@include device-width(500px){
+				width: 200px;
+				background-size: contain;
+				background-position: center;
+			}
+		}
+	}// .logo
+
+	nav{
+		float: right;
+
+		@include device-width(1440px){
+			font-size: 80%;
+		}
+
+		@include device-width(1200px){
+			font-size: 70%;
+		}
+
+		@include device-width(950px){
+			position: absolute;
+			top: 100%;
+			left: 0;
+			max-height: 0;
+			width: 100%;
+			overflow: hidden;
+			@include transition(all,.3s);
+		}
+
+		ul{
+			@extend %notalist;
+			overflow: hidden;
+		}
+
+		li{
+			float: left;
+			height: 60px;
+			line-height: 60px;
+			margin-left: 2em;
+
+			@include device-width(950px){
+				float: none;
+				margin: 0;
+				text-align: center;
+			}
+
+			&:first-child{
+				margin-left: 0;
+			}
+			
+			a{
+				color: #333;
+				margin-top: 5px;
+				padding-bottom: 5px;
+				font-size: 1.25em;
+				border-bottom: 3px solid transparent;
+
+				&:hover{
+					border-bottom: 3px solid #333;
+				}
+			}
+
+			&.red a:hover{
+				// color: $red;
+				border-bottom: 3px solid $red;
+			}
+
+			&.green a:hover{
+				// color: $green;
+				border-bottom: 3px solid $green;
+			}
+
+			&.blue a:hover{
+				// color: $blue;
+				border-bottom: 3px solid $blue;
+			}
+
+			&.current-menu-item{
+				&.red a{
+					// color: $red;
+					border-bottom: 3px solid $red;
+				}
+
+				&.green a{
+					// color: $green;
+					border-bottom: 3px solid $green;
+				}
+
+				&.blue a{
+					// color: $blue;
+					border-bottom: 3px solid $blue;
+				}
+			}
+
+			&.cta{
+				a{
+					padding: 0.5em 1em;
+					@extend .button;
+					color: #fff;
+					background-color: $green;
+					border-bottom: none;
+
+					&:hover{
+						background-color: darken($green,5%);
+						border-bottom: none;
+					}
+				}		
+			}
+
+		}// li
+	}// nav
+
+	#menu-toggle{
+		display: none;
+		@extend .valign;
+		right: 1em;
+		color: #333;
+		font-size: 120%;
+
+		@include device-width(950px){
+			display: inline-block;
+		}
+	}// #menu-toggle
+
+}// #header
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+   
+#hero{
+	padding-top: 50%;
+	background-color: black;
+}

@@ -15,5 +15,24 @@
 	<body <?php body_class(); ?>>
 
 	<header id="header">
-		
+
+		<div class="container">
+			<div class="logo">
+				<a href="<?php bloginfo('home'); ?>" title="<?php the_title(); ?>"></a>	
+			</div>
+			
+			<button id="menu-toggle">
+				<i class="icon-menu"></i>
+			</button>
+
+			<nav>
+				<?php 
+					$args = array('theme_location' => 'header_main', 'menu' => '', 'container' => '');
+					wp_nav_menu( $args );
+				?>
+			</nav>			
+		</div>
+
 	</header><!-- #header -->
+
+	<main id="ludacris" role="main">
