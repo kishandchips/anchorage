@@ -1,0 +1,13 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+
+@mixin device-width($width){
+	@media only screen and (max-width: $width){
+		@content;
+	}
+}
+
+@function em($px, $base: $base-font-size) {
+    @return ($px / $base) * 1em;
+}

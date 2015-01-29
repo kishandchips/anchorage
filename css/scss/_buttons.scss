@@ -1,0 +1,31 @@
+// ==========================================================================
+// Button Styles
+// ==========================================================================
+
+.button{
+	@include border-radius(5px);
+	@include transition(all,.3s);
+
+	&.primary{
+		color: #fff;
+		background-color: $green;
+	}
+
+	&.secondary{
+		color: #fff;
+		border: 3px solid #fff;
+
+		&:hover{
+			color: #333;
+			background-color: #fff;
+		}
+	}
+
+	&.arrow{
+		position: relative;
+
+		&:after{
+			content:"";
+		}
+	}
+}// .button
