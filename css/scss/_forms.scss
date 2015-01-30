@@ -1,3 +1,79 @@
 // ==========================================================================
 // Form Styles
 // ==========================================================================
+
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+textarea{
+	padding: 0.7em 1em;
+	color: #1a97cd;
+	font-size: 0.9em;
+	background-color: #fff;
+	border: none;
+	@include border-radius(5px);
+	outline: none;
+	@include transition(all, .2s);
+
+	&:focus{
+		@include box-shadow(0 0 5px 5px rgba(#7cc9dd,0.5))
+	}
+}
+
+textarea{
+	resize: vertical;
+}
+
+// ==========================================================================
+// Forms
+// ==========================================================================
+
+#footer{
+	.form{
+		label{
+			display: none;
+		}
+
+		.gfield{
+			margin-top: 1em;
+		}
+	}
+}// #footer
+
+// ==========================================================================
+// Gravity Forms
+// ==========================================================================
+
+.gform_wrapper{
+
+}// .gform_wrapper
+
+.gform_heading{
+
+}// .gform_heading
+
+.gform_body{
+
+	ul.gform_fields{
+		@extend %notalist;
+	}
+
+	li.gfield{
+		.ginput_container{
+			.medium{
+				width: 100%;
+			}
+		}
+	}
+
+}// .gform_body
+
+.gform_footer{
+	margin-top: 1em;
+}// .gform_footer
+
+.gform_validation_container{
+	display: none;
+}

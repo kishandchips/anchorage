@@ -1,3 +1,169 @@
 // ==========================================================================
 // Page Specific
 // ==========================================================================
+
+#home{
+
+	.home-items{
+		margin-top: 60px;
+		margin-bottom: 120px;
+		.row{
+			margin: 0 -2%;
+		}
+
+		.col-1-3{
+			padding: 0 2%;
+
+			@include device-width(900px){
+				width: 50%;
+				margin-bottom: 4%;
+
+				&:last-child{
+					width: 100%;
+
+					.overlay{
+						background-size: inherit;
+					}
+				}
+			}
+
+			@include device-width(650px){
+				width: 100%;
+
+				.overlay{
+					background-size: inherit;
+				}
+			}
+		}// .col-1-3
+
+		.inner{
+			position: relative;
+			padding: 1em;
+			
+			figure{
+				height: 400px;
+				background-size: 100%;
+				background-position: center;
+				@include opacity(0.2);
+				@include transition(all,.5s);
+
+				@include device-width(500px){
+					height: 300px;
+				}
+			}
+
+			&:hover{
+				figure{
+					background-size: 120%;
+				}
+			}
+		}
+
+		.overlay{
+			position: absolute;
+			top: 1em;
+			bottom: 1em;
+			left: 1em;
+			right: 1em;
+
+			.valign{
+				width: 100%;
+				padding: 0 10px;
+				text-align: center;
+			}
+
+			img{
+				@include transition(all,.5s);
+			}
+
+			span{
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0em;
+				color: #fff;
+				font-weight: 700;
+				text-align: center;
+				line-height: 1;
+				@include opacity(0);
+				@include transition(all,.5s);
+
+				@include device-width(600px){
+					font-size: 80%;
+				}
+			}
+
+			&:hover{
+
+				img{
+					margin-bottom: 2em;
+				}
+
+				span{
+					bottom: 1em;
+					@include opacity(1);
+				}
+			}
+		}// .overlay
+	}// .home-items
+
+}// #home
+
+// ==========================================================================
+// APARTMENT PAGE
+// ==========================================================================
+
+#apartment{
+	.left-wrapper{
+		padding-right: 40%;
+	}
+		
+	.section{
+		padding: 3em;
+
+		&.yellow{
+			background-color: #ffed9a;
+		}
+
+		&.off-white{
+			background-color: #faf6ee;
+		}
+	}
+
+	.intro-text{
+		font-size: 1.2em;
+	}
+
+	.section-subheading{
+		margin-bottom: 0;
+	}
+
+	.box-list{
+		@extend %notalist;
+		@extend .clearfix;
+
+		li{
+			display: inline-block;
+			width: 16.667%;
+
+			p{
+				font-size: 0.9em;
+			}
+		}
+
+		&:first-of-type{
+			.inner{
+				padding-top:100%;
+				background-color: #feda34;
+			}
+		}
+
+		&:last-of-type{
+			.inner{
+				padding-top:100%;
+				background-color: #188dc6;
+			}
+		}
+	}
+
+}// #apartment

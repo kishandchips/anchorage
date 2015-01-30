@@ -2,7 +2,12 @@
 // Typographic Styles
 // ==========================================================================
 
+@mixin aktiv{
+	font-family:'Aktiv Grotesk W01';	
+}
+
 body{
+	color: #333333;
 	font-size: 125%;
 	font-family:'Aktiv Grotesk W01';
 }
@@ -11,4 +16,9 @@ a{
 	color: $red;
 	text-decoration: none;
 	@include transition(all,.3s);
+}
+
+.section-heading{
+	font-size: 2em;
+	font-weight: 400;
 }

@@ -11,7 +11,7 @@
 			main.vars.body = $('body'),
 
 			this.header.init();
-			this.slider.init();
+			this.about.init();
 			
 			main.w.on('load', function(){
 			});
@@ -35,8 +35,19 @@
 
 		},// main.header
 
+		about:{
+			element: $('#apartment'),
+
+			init: function(){
+				var element = main.about.element;
+				if(!element.length){return;}
+
+				main.slider.init();
+			}
+		},
+
 		slider: {
-			element: $('.slider'),
+			element: $('#slider'),
 
 			init: function(){
 				var element = main.slider.element;
@@ -50,7 +61,6 @@
 					    navText: [],
 					    navSpeed: 1000,
 					    dots: true,
-					    autoHeight: true,
 					});					
 				})
 			}

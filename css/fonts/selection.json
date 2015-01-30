@@ -4,6 +4,62 @@
 		{
 			"icon": {
 				"paths": [
+					"M512.463 0l91.537 91.537-420.463 420.463 420.463 420.398-91.537 91.602-512-512z"
+				],
+				"attrs": [
+					{}
+				],
+				"isMulticolor": false,
+				"width": 604,
+				"grid": 0,
+				"tags": [
+					"arrow-icon"
+				]
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"order": 7,
+				"id": 1,
+				"name": "arrow-icon-left",
+				"prevSize": 16,
+				"code": 58885
+			},
+			"setIdx": 0,
+			"iconIdx": 0
+		},
+		{
+			"icon": {
+				"paths": [
+					"M91.537 1024l-91.537-91.537 420.463-420.463-420.463-420.398 91.537-91.602 512 512z"
+				],
+				"attrs": [
+					{}
+				],
+				"isMulticolor": false,
+				"width": 604,
+				"grid": 0,
+				"tags": [
+					"arrow-icon"
+				]
+			},
+			"attrs": [
+				{}
+			],
+			"properties": {
+				"order": 6,
+				"id": 0,
+				"prevSize": 16,
+				"code": 58884,
+				"name": "arrow-icon-right"
+			},
+			"setIdx": 0,
+			"iconIdx": 1
+		},
+		{
+			"icon": {
+				"paths": [
 					"M128 213.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 725.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5zM128 469.333h768q17.667 0 30.167 12.5t12.5 30.167-12.5 30.167-30.167 12.5h-768q-17.667 0-30.167-12.5t-12.5-30.167 12.5-30.167 30.167-12.5z"
 				],
 				"attrs": [
@@ -25,7 +81,7 @@
 				"code": 58883,
 				"name": "menu"
 			},
-			"setIdx": 0,
+			"setIdx": 1,
 			"iconIdx": 0
 		},
 		{
@@ -52,7 +108,7 @@
 				"code": 58882,
 				"name": "mail"
 			},
-			"setIdx": 1,
+			"setIdx": 2,
 			"iconIdx": 0
 		},
 		{
@@ -81,7 +137,7 @@
 				"code": 58881,
 				"name": "facebook"
 			},
-			"setIdx": 2,
+			"setIdx": 3,
 			"iconIdx": 0
 		},
 		{
@@ -111,7 +167,7 @@
 				"code": 58880,
 				"name": "twitter"
 			},
-			"setIdx": 2,
+			"setIdx": 3,
 			"iconIdx": 1
 		},
 		{
@@ -138,7 +194,7 @@
 				"ligatures": "arrow-right2, right4",
 				"name": "arrow-right"
 			},
-			"setIdx": 3,
+			"setIdx": 4,
 			"iconIdx": 0
 		},
 		{
@@ -166,7 +222,7 @@
 				"ligatures": "arrow-down2, down2",
 				"name": "arrow-down"
 			},
-			"setIdx": 3,
+			"setIdx": 4,
 			"iconIdx": 1
 		}
 	],
@@ -198,6 +254,7 @@
 			"bgColor": 16777215
 		},
 		"historySize": 100,
-		"showCodes": true
+		"showCodes": true,
+		"gridSize": 16
 	}
 }

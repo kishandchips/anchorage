@@ -6,7 +6,31 @@ button{
 	background: none;
 	border: none;
 	outline: none;
-}
+
+	&.submit{
+		padding: 0.7em 1em;
+		color: #fff;
+		@include aktiv;
+		border: 3px solid #fff;
+		@include border-radius(5px);
+		@include transition(all,.3s);
+
+		&:hover{
+			color: $blue2;
+			background-color: #fff;
+		}
+		
+		span,i{
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		i{
+			margin-left: 1em;
+		}
+	}// .submit
+
+}// button
 
 .button{
 	@include border-radius(5px);

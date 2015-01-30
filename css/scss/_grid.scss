@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-.grid, .clearfix, .container {
+.row, .clearfix, .container {
   *zoom: 1;
 
   &:before,
@@ -25,9 +25,14 @@
 .container {
   position: relative;
   width: 90%;
-  max-width: 1600px;
+  max-width: 1440px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.row{
+  margin-left:-10px;
+  margin-right: -10px;
 }
 
 %column{
