@@ -33,6 +33,9 @@ button{
 }// button
 
 .button{
+	display: inline-block;
+	padding: 0.6em 1em;
+	font-weight: 700;
 	@include border-radius(5px);
 	@include transition(all,.3s);
 
@@ -59,3 +62,15 @@ button{
 		}
 	}
 }// .button
+
+.show-more{
+	padding-bottom: 5px;
+	color: $red;
+	font-weight: 700;
+	border-bottom: 3px solid transparent;
+	@include transition(all,.3s);
+
+	&:hover{
+		border-bottom: 3px solid $red;
+	}
+}

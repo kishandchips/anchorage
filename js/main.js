@@ -12,9 +12,6 @@
 
 			this.header.init();
 			this.about.init();
-			
-			main.w.on('load', function(){
-			});
 
 		},
 
@@ -43,8 +40,50 @@
 				if(!element.length){return;}
 
 				main.slider.init();
-			}
-		},
+				main.about.floater.init();
+
+				$('.show-more').on('click', function(){
+					$(this).parent().siblings('.hide-more').toggleClass('expand');
+				});
+			},
+
+			floater:{
+				init: function(){
+					var wrap = $('.floater-wrap');
+
+					if(!wrap.is(':hidden')){
+						console.log('running');
+						
+						var bar = $('#booking-bar');
+						var barOffset = bar.offset().top;
+						var headerH = main.vars.header.outerHeight();
+						var formH = $('.booking-form').outerHeight();
+						
+						main.w.on('load', function(){
+							barH = bar.outerHeight(true);
+						});
+
+						main.w.on('scroll', function() {
+							var scrollPos = main.w.scrollTop();
+
+						    if ( scrollPos >= barOffset) {
+						    	bar.addClass('fixed');
+								wrap.css({top: scrollPos + headerH + 10, bottom: 'auto'});
+
+								if(wrap.position().top + formH >= barH){
+									wrap.css({bottom: 20,top: 'auto'});
+								}
+
+						    } else {
+						    	bar.removeClass('fixed');
+						    	wrap.css({top:0});
+						    }
+						});						
+					}
+				}// init
+			}// about.floater
+
+		},// main.about
 
 		slider: {
 			element: $('#slider'),

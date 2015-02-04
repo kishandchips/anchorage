@@ -13,13 +13,14 @@ $template_directory_uri = get_template_directory_uri();
 // Image sizes
 	add_image_size( 'slider', 2000, 9999, false );
 	add_image_size( 'home-square', 400, 400, true );
+	add_image_size( 'community-grid', 800, 493, true );
 
 // Add Actions
 	add_action( 'wp_enqueue_scripts', 'custom_styles', 30 );
 	add_action( 'wp_enqueue_scripts', 'custom_scripts', 30 );
 	add_action("gform_field_standard_settings", "custom_gform_standard_settings", 10, 2);
 	add_action('gform_enqueue_scripts',"custom_gform_enqueue_scripts", 10, 2);
-	// add_action( 'init', 'create_post_type' );
+	add_action( 'init', 'create_post_type' );
 	// add_action( 'init', 'create_custom_categories' );
 	// add_action( 'pre_get_posts', 'custom_posts_per_page' );
 	// add_action( 'admin_menu', 'my_remove_menu_pages',999 );
@@ -36,6 +37,7 @@ $template_directory_uri = get_template_directory_uri();
 	add_filter('upload_mimes', 'cc_mime_types');
 	add_filter("gform_tabindex", "gform_tabindexer");
 	add_filter("gform_submit_button", "form_submit_button", 10, 2);
+	add_filter('the_content', 'add_after_post_content');
 
 // Functions
 function custom_styles(){
@@ -109,34 +111,45 @@ function form_submit_button($button, $form){
 }
 
 
-// // Register Custom Post Types
-// function create_post_type() {
+// Register Custom Post Types
+function create_post_type() {
 
-// 	register_post_type( 'POSTS',
-// 		array(
-// 			'labels' => array(
-// 				'name' => __( 'POSTS' ),
-// 				'singular_name' => __( 'POST' ),
-// 				'add_new' => __('Add POST'),
-// 				'search_items' => __('Search POSTS'),
-// 				'not_found' => __('No POSTS Found')
-// 			),
-// 		'public' => true,
-// 		'has_archive' => true,
-// 		'menu_position' => 5,
-// 		'hierarchical' => true,
-// 		'supports' => array(
-// 			'title',
-// 			'editor',
-// 			'excerpt',
-// 			'thumbnail',
-// 			'page-attributes'
-// 			)
-// 		)
-// 	);
+	register_post_type( 'Reviews',
+		array(
+			'labels' => array(
+				'name' => __( 'Reviews' ),
+				// 'singular_name' => __( 'Review' ),
+				// 'add_new' => __('Add Review'),
+				'search_items' => __('Search Reviews'),
+				'not_found' => __('No Reviews Found')
+			),
+		'public' => true,
+		'has_archive' => true,
+		'menu_position' => 5,
+		'hierarchical' => true,
+		'supports' => array(
+			'title',
+			'editor',
+			'excerpt',
+			'thumbnail',
+			'page-attributes'
+			)
+		)
+	);
 
-// 	flush_rewrite_rules( false );
-// }
+	flush_rewrite_rules( false );
+}
+
+// After post content
+function add_after_post_content($content) {
+	global $template_directory_uri;
+
+	if(!is_feed() && !is_home() && is_singular() && is_main_query()) {
+		$content .= '<span class="signature"><img src="'. $template_directory_uri .'/images/wave-signature.png"></span>';
+	}
+	return $content;
+}
+
 
 // // Register Taxonomies
 // function create_custom_categories() {

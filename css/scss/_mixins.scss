@@ -8,6 +8,12 @@
 	}
 }
 
+@mixin device-min-width($width){
+	@media only screen and (min-width: $width){
+		@content;
+	}
+}
+
 @function em($px, $base: $base-font-size) {
     @return ($px / $base) * 1em;
 }

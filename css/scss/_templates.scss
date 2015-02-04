@@ -42,7 +42,7 @@
 			
 			figure{
 				height: 400px;
-				background-size: 100%;
+				background-size: 102%;
 				background-position: center;
 				@include opacity(0.2);
 				@include transition(all,.5s);
@@ -114,56 +114,511 @@
 // ==========================================================================
 
 #apartment{
+	position: relative;
+
+	#booking-bar{
+		position: absolute;
+		top:0;
+		right: 0;
+		left: 0;
+		bottom: 0;
+		margin-top: 40%;
+
+		@include device-width(1200px){
+			position: relative;
+			margin-top: 0;
+		}
+
+		&.fixed{
+			margin-top: 0;
+		}
+
+		.floater-wrap{
+			@extend .clearfix;
+			position: absolute;
+			left: 0;
+			right: 0;
+			max-width: 1440px;
+			margin: 0 auto;
+
+			@include device-width(1200px){
+				display: none;
+			}
+		}
+
+		.container{
+			display: none;
+
+			@include device-width(1200px){
+				display: block;
+			}
+		}
+
+		.booking-form{
+			float: right;
+			height: 200px;
+			width: 200px;
+			background-color: white;
+
+			@include device-width(1200px){
+				float: none;
+			}
+		}
+	}// #booking-float
+
 	.left-wrapper{
 		padding-right: 40%;
+
+		@include device-width(1200px){
+			padding-right: 0;
+		}
 	}
 		
 	.section{
-		padding: 3em;
+		padding: 3em 0;
 
 		&.yellow{
 			background-color: #ffed9a;
+
+			.section-heading{
+				border-bottom: 1px solid #333;
+			}
 		}
 
 		&.off-white{
 			background-color: #faf6ee;
+
+			.section-heading{
+				border-bottom: 1px solid #cccccc;
+			}
+		}
+	}
+	
+	.section-heading{
+		padding-bottom: 0.5em;
+		color: $red;
+	}
+
+	.section-subheading{
+		margin-bottom: 0;
+		font-size: 1em;
+	}
+
+	.section-content{
+		p{
+			font-size: 0.9em;
 		}
 	}
 
 	.intro-text{
 		font-size: 1.2em;
-	}
 
-	.section-subheading{
-		margin-bottom: 0;
+		@include device-width(800px){
+			font-size: 1em
+		}
 	}
 
 	.box-list{
 		@extend %notalist;
 		@extend .clearfix;
+		margin-top: 0.5em;
 
 		li{
-			display: inline-block;
-			width: 16.667%;
+			float: left;
+			width: 15%;
+			min-width: 115px;
+			margin-right: 1.667%;
+			vertical-align: top;
+
+			@media screen and (min-width:751px) and (max-width:1440px){
+				width: 30%;
+				margin-right: 5%;
+				
+				&:nth-child(3n+1){
+					clear: left;
+				}
+
+				&:nth-child(3n+3){
+					margin-right: 0;
+				}
+			}
+
+			@media screen and (min-width: 450px) and (max-width: 750px){
+				width: 45%;
+				margin-right: 5%;
+				
+				&:nth-child(2n+1){
+					clear: left;
+				}
+
+				&:nth-child(2n+2){
+					margin-right: 0;
+				}
+			}
+
+			@include device-width(449px){
+				width: 100%;
+
+				.inner{
+					display: none;
+				}
+
+				p{
+					margin: 0;
+				}
+			}
+
+			.inner{
+				padding:1em;
+				text-align: center;
+			}
 
 			p{
-				font-size: 0.9em;
+				font-size: 0.8em;
 			}
-		}
+		}// li
 
 		&:first-of-type{
 			.inner{
-				padding-top:100%;
 				background-color: #feda34;
+				border: 10px solid lighten(#feda34,20%);
 			}
 		}
 
 		&:last-of-type{
 			.inner{
-				padding-top:100%;
 				background-color: #188dc6;
+			}
+		}
+	}// .box-list
+
+	.hide-more{
+		position: relative;
+		max-height: 500px;
+		overflow: hidden;
+		@include single-transition(max-height, .5s);
+
+		&:after{
+			content: "";
+			position: absolute;
+			right:0;
+			bottom:0;
+			left: 0;
+			height:50px;
+			// needs latest Compass, add '@import "compass"' to your scss
+			@include filter-gradient(#ffffff, #faf6ee, vertical); // IE6-9
+			@include background-image(linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(250,246,238,1) 100%));
+
+
+		}
+
+		&.expand{
+			max-height: 2000px;
+
+			&:after{
+				display: none;
+			}
+		}
+	}// .hide-more
+
+	.rules{
+		margin-top: 2em;
+		padding-top:1em;
+		border-top: 1px solid #cccccc;
+	}
+
+	.review{
+
+		article{
+			@extend .clearfix;
+			margin-top: 3em;
+
+			&:first-child{
+				margin-top: 0;
+			}
+
+			.article-image{
+				float:left;
+				width: 15%;
+
+				@include device-width(450px){
+					display: none;
+				}
+			}
+
+			.article-content{
+				float: left;
+				width: 85%;
+				padding-left: 20px;
+
+				@include device-width(450px){
+					width: 100%;
+					padding-left: 0;
+				}
+			}
+
+			.review-name{
+				font-weight: 700;
+			}
+
+			.review-text{
+				margin-top: 0;
+			}
+		}
+
+	}// .review
+
+	.host{
+		@include device-width(450px){
+
+			.col-2-5{
+				width: 100%;
+				text-align: center;				
+			}
+			
+			.col-3-5{
+				width: 100%;
+			}
+		}
+	}// .host
+
+}// #apartment
+
+// ==========================================================================
+// COMMUNITY
+// ==========================================================================
+
+#community{
+	margin-top: 112px;
+
+	.admin-bar &{
+		margin-top: 80px;
+	}
+
+	.hero{
+		p{
+			color: #fff;
+			font-weight: 700;			
+		}
+
+		img{
+			@include device-width(1000px){
+				width: 30%;	
+			}
+			@include device-width(600px){
+				width: 50%;
 			}
 		}
 	}
 
-}// #apartment
+	.article-list{
+		@extend .clearfix;
+
+		article{
+			display: table;
+			table-layout: fixed;
+			width: 100%;
+
+			&:nth-child(n+1){
+					color: #fff;
+					background-color: $blue3;
+			}
+
+			&:nth-child(2n+2){
+					color: #fff;
+					background-color: $red;
+			}
+
+			&:nth-child(3n+3){
+					color: #fff;
+					background-color: $green;
+			}
+
+			&:nth-child(even){
+				.article-content{
+					padding: 3em 0 3em 3em;
+					@include translateX(100%);
+
+					@include device-width(1400px){
+						padding: 3em;
+					}
+
+					@include device-width(950px){
+						padding: 2em 1em;
+					}
+
+					@media screen and (max-width: 750px){
+						@include translateX(0);
+					}
+				}
+
+				.article-image{
+					@include translateX(-100%);
+
+					@media screen and (max-width: 750px){
+						@include translateX(0);
+					}
+				}
+			}
+
+		}// article
+
+		.content-wrap{
+			display: table-cell;
+			vertical-align: top;
+			width: 50%;
+
+			@include device-width(750px){
+				display: block;
+				width: 100%;
+			}
+		}
+
+		.article-content{
+			max-width: 720px;
+			float: right;
+			padding: 3em 3em 3em 0;
+
+			.article-category{
+				font-weight: 700;
+				margin-bottom: 1.5em;
+			}
+			
+			.article-title{
+				margin: 0;
+				font-weight: 400;
+				line-height: 1;
+			}
+
+			.article-excerpt{
+				font-size: 0.9em;
+			}
+
+			.button{
+				margin-top: 1em;
+			}
+
+			@include device-width(1400px){
+				padding: 3em;
+			}
+
+			@include device-width(1200px){
+				font-size: 80%;
+			}
+
+			@include device-width(950px){
+				padding: 2em 1em;
+			}
+
+			@include device-width(750px){
+				float: none;
+			}
+
+		}// .article-content
+
+		.article-image{
+			display: table-cell;
+			vertical-align: top;
+			width: 50%;
+			padding-top: 31%;
+			background-size: cover;
+
+			@include device-width(750px){
+				display: block;
+				width: 100%;
+				padding-top:61%;
+			}
+		}// .article-image
+
+	}// .article-list
+}// #community
+
+// ==========================================================================
+// SINGLE
+// ==========================================================================
+
+#single{
+	
+	#article{
+		.article-header{
+			text-align: center;
+
+			h1{
+				color: $red;
+				font-size: 5em;
+			}
+		}
+
+		.article-content{
+			position: relative;
+			width: 80%;
+			margin-right: auto;
+			margin-left: auto;
+			
+			p{
+				font-size: 0.9em;
+
+				&:first-child{
+					font-size: 1.3em;
+				}
+			}
+		}
+
+		.signature{
+			display: block;
+			margin: 3em 0;
+			text-align: center;
+		}
+
+	}// #article
+
+	#related{
+		display: table;
+		table-layout: fixed;
+		width: 100%;
+
+		.col-1-2{
+			padding: 0;
+		}
+
+		article{
+			display: table-cell;
+			vertical-align: top;
+			width: 50%;
+			color: #fff;
+			background-color: $blue3;
+
+			&:first-child{
+				background-color: $green;
+			}
+		}
+
+		.article-inner{
+			padding: 3em;
+		}
+
+		.related-image{
+			padding-top: 61%;
+			background-size: cover;
+		}
+		
+		.related-category{
+			font-size: 0.9em;
+			font-weight: 700;
+		}
+
+		.related-title{
+			margin: 0.5em 0 0 0;
+			font-size: 1.5em;
+		}
+
+		.related-excerpt{
+			font-size: 0.9em;
+		}
+
+		.button{
+			margin-top: 1em;
+		}
+	}
+
+}// #single

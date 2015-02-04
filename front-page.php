@@ -2,7 +2,7 @@
 
 	<div id="home">
 
-		<header id="hero" style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
+		<header class="hero overlay" style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
 			<div class="valign">
 				<h2 class="hero-text">
 					<?php _e(the_field('hero_headline'), 'anchorage'); ?>
