@@ -39,12 +39,12 @@
 							
 				<?php if($related->have_posts()):  ?>
 			
-						<section id="related">
+						<section id="related" class="match-block-container">
 							<?php while($related->have_posts()): $related->the_post(); ?>
 								<?php $category = get_the_category(); ?>
-								<?php $image= wp_get_attachment_image_src( get_post_thumbnail_id($post->ID) ); ?>
+								<?php $image= wp_get_attachment_image_src( get_post_thumbnail_id($post->ID),'full' ); ?>
 
-								<article>
+								<article class="match-block-1-2">
 									<div class="related-image" style="background-image:url(<?php echo $image[0]; ?>)">
 									</div>
 

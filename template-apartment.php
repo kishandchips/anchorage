@@ -24,7 +24,6 @@
 		<div id="booking-bar">
 			<div class="floater-wrap">
 				<div class="booking-form">
-					
 				</div>
 			</div>
 			

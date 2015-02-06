@@ -1,8 +1,21 @@
 /* ==========================================================================
    Generic Page Styles
    ========================================================================== */
+
 #ludacris{
 	position: relative;
+}
+
+#main{
+	margin-top: 112px;
+
+	.admin-bar &{
+		margin-top: 80px;
+	}
+
+	.home &{
+		margin-top: 0;
+	}
 }
 
 /* ==========================================================================
@@ -253,8 +266,88 @@
 }// #hero
 
 /* ==========================================================================
+   Match Blocks
+   ========================================================================== */
+
+.match-block-container{
+	display: table;
+	table-layout: fixed;
+	width: 100%;
+}
+
+.match-block-1-2{
+	display: table-cell;
+	vertical-align: top;
+	width: 50%;
+}
+
+/* ==========================================================================
+   MODAL
+   ========================================================================== */
+
+body.modal-open{
+	.modal-wrapper{
+		@extend .visible;
+	}
+}
+
+.modal-wrapper{
+		@extend .invisible;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(#000, 0.2);
+		@include transition(all,.3s);
+		z-index: 99999;
+	}// .modal-wrapper
+
+	.modal{
+		position: relative;
+		width: 100%;
+		max-width: 600px;
+		margin: 2em auto 0 auto;
+		padding: 2em;
+		color: #333;
+		background-color: #fff;
+
+		@media screen and (max-width: 600px){
+			margin-top: 0;
+		}
+
+		header{
+			padding-top: 1.5em;
+
+			.modal-title{
+				margin: 0;
+				font-size: 1.25em;
+			}
+
+			p{
+				margin: 0;
+				font-size: 0.9em;
+			}
+		}
+
+		.modal-toggle{
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			color: #333;
+			font-size: 1.5em;
+
+			&:after{
+				@extend %icon;
+				content: "\e608";
+			}
+		}
+	}// .modal
+
+/* ==========================================================================
    Owl Carousel
    ========================================================================== */
+
 #slider{
 	position: relative;
 

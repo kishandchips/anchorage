@@ -16,30 +16,31 @@
 
 			<?php while(have_posts()): the_post(); ?>
 				
-				<article>
+				<article class="match-block-container">
 					
-					<div class="content-wrap">
+					<div class="content-wrap match-block-1-2">
 
-							<div class="article-content">
-									<div class="article-category">
-										<?php
-										$category = get_the_category(); 
-										echo $category[0]->cat_name;
-										?>
-									</div>
-									
-									<h2 class="article-title">
-										<?php the_title(); ?>
-									</h2>
+						<div class="article-inner">
+								<div class="article-category">
+									<?php
+									$category = get_the_category(); 
+									echo $category[0]->cat_name;
+									?>
+								</div>
+								
+								<h2 class="article-title">
+									<?php the_title(); ?>
+								</h2>
 
-									<div class="article-excerpt">
-										<?php the_excerpt(); ?>
-									</div>
-									<a href="<?php the_permalink(); ?>" class="button secondary">Read More</a>
-							</div>
+								<div class="article-excerpt">
+									<?php the_excerpt(); ?>
+								</div>
+								<a href="<?php the_permalink(); ?>" class="button secondary">Read More</a>
+						</div>
 
-					</div><!-- .container -->
-					<div class="article-image"  style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
+					</div><!-- .content-wrap -->
+
+					<div class="article-image match-block-1-2"  style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
 					</div>
 
 				</article>

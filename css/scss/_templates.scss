@@ -389,11 +389,6 @@
 // ==========================================================================
 
 #community{
-	margin-top: 112px;
-
-	.admin-bar &{
-		margin-top: 80px;
-	}
 
 	.hero{
 		p{
@@ -409,16 +404,10 @@
 				width: 50%;
 			}
 		}
-	}
+	}// .hero
 
 	.article-list{
-		@extend .clearfix;
-
 		article{
-			display: table;
-			table-layout: fixed;
-			width: 100%;
-
 			&:nth-child(n+1){
 					color: #fff;
 					background-color: $blue3;
@@ -435,16 +424,14 @@
 			}
 
 			&:nth-child(even){
-				.article-content{
-					padding: 3em 0 3em 3em;
+				.article-inner{
+					padding: 5%;
+					padding-right: 0;
 					@include translateX(100%);
 
-					@include device-width(1400px){
-						padding: 3em;
-					}
-
 					@include device-width(950px){
-						padding: 2em 1em;
+						padding: 1em;
+						margin: 0;
 					}
 
 					@media screen and (max-width: 750px){
@@ -464,20 +451,20 @@
 		}// article
 
 		.content-wrap{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
-
-			@include device-width(750px){
-				display: block;
-				width: 100%;
+			&.match-block-1-2{
+				@include device-width(750px){
+					display: block;
+					width: 100%;
+				}				
 			}
-		}
+		}// .content-wrap
 
-		.article-content{
-			max-width: 720px;
+		.article-inner{
 			float: right;
-			padding: 3em 3em 3em 0;
+			max-width: 720px;
+			margin-left: 10%;
+			padding: 5%;
+			padding-left: 0;
 
 			.article-category{
 				font-weight: 700;
@@ -498,16 +485,13 @@
 				margin-top: 1em;
 			}
 
-			@include device-width(1400px){
-				padding: 3em;
-			}
-
 			@include device-width(1200px){
 				font-size: 80%;
 			}
 
 			@include device-width(950px){
-				padding: 2em 1em;
+				padding: 1em;
+				margin: 0;
 			}
 
 			@include device-width(750px){
@@ -517,15 +501,17 @@
 		}// .article-content
 
 		.article-image{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
 			padding-top: 31%;
 			background-size: cover;
 
+			&.match-block-1-2{
+				@include device-width(750px){
+					display: block;
+					width: 100%;					
+				}
+			}
+
 			@include device-width(750px){
-				display: block;
-				width: 100%;
 				padding-top:61%;
 			}
 		}// .article-image
@@ -540,85 +526,262 @@
 #single{
 	
 	#article{
+		&.container{
+			@include device-width(950px){
+				width: 100%;
+				padding: 0 1em;
+			}
+		}
+
 		.article-header{
 			text-align: center;
 
 			h1{
+				margin: 5% 0;
 				color: $red;
 				font-size: 5em;
+				line-height: 1.2;
+
+				@include device-width(950px){
+					font-size: 3em;
+				}
+				@include device-width(600px){
+					font-size: 2em;
+				}
 			}
-		}
+		}// .article-header
 
 		.article-content{
 			position: relative;
-			width: 80%;
+			width: 100%;
+			max-width: 800px;
 			margin-right: auto;
 			margin-left: auto;
 			
 			p{
 				font-size: 0.9em;
+				line-height: 1.6;
+
+				@include device-width(750px){
+					font-size: 0.8em;
+				}
 
 				&:first-child{
 					font-size: 1.3em;
+
+					@include device-width(950px){
+						font-size: 1.1em;
+					}
+					@include device-width(600px){
+						font-size: 0.9em;
+					}
 				}
 			}
-		}
-
-		.signature{
-			display: block;
-			margin: 3em 0;
-			text-align: center;
-		}
+		}// .article-content
 
 	}// #article
 
 	#related{
-		display: table;
-		table-layout: fixed;
-		width: 100%;
 
-		.col-1-2{
-			padding: 0;
+		&.match-block-container{
+			@include device-width(800px){
+				display: block;
+			}
+
+			.match-block-1-2{
+				@include device-width(800px){
+					display: block;
+					width: 100%;
+				}
+			}
 		}
 
 		article{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
 			color: #fff;
 			background-color: $blue3;
 
 			&:first-child{
 				background-color: $green;
-			}
-		}
 
-		.article-inner{
-			padding: 3em;
-		}
+				.article-inner{
+					float: right;
+					margin-left: 10%;
+					padding-left: 0;
+
+					@include device-width(800px){
+						float: none;
+						margin: 0;
+						padding: 1em;
+					}
+				}
+			}
+		}// article
 
 		.related-image{
 			padding-top: 61%;
 			background-size: cover;
 		}
+
+		.article-inner{
+			max-width: 720px;
+			padding: 5%;
 		
-		.related-category{
-			font-size: 0.9em;
-			font-weight: 700;
-		}
+			.related-category{
+				font-size: 0.9em;
+				font-weight: 700;
+			}
 
-		.related-title{
-			margin: 0.5em 0 0 0;
-			font-size: 1.5em;
-		}
+			.related-title{
+				margin: 0.5em 0 0 0;
+				font-size: 1.5em;
+			}
 
-		.related-excerpt{
-			font-size: 0.9em;
-		}
+			.related-excerpt{
+				font-size: 0.9em;
+			}
+
+			@include device-width(950px){
+				font-size: 80%;
+			}
+
+			@include device-width(800px){
+				margin: 0;
+				padding: 1em;
+				font-size: 100%;
+			}
+
+			@include device-width(500px){
+				font-size: 80%;
+			}
+		}// .article-inner
 
 		.button{
 			margin-top: 1em;
 		}
-	}
+
+	}// #related
 
 }// #single
+
+// ==========================================================================
+// PAGE
+// ==========================================================================
+
+#page{
+	padding: 3em 0;
+
+	@include device-width(950px){
+		padding: 1em 0;
+	}
+	
+	%header{
+		margin-bottom: 1em;
+		line-height: 60px;		
+	}
+
+	#page-content{
+		float: left;
+
+		@include device-width(950px){
+			width: 100%;
+		}
+
+		header{
+			@extend %header;
+
+			h1{
+				margin: 0;
+				color: $red;
+				font-size: 2em;
+				font-weight: 400;
+			}
+		}
+
+		.inner{
+			max-width: 700px;
+
+			@include device-width(950px){
+				max-width: 100%;
+			}
+
+			@include device-width(750px){
+				font-size: 0.9em;
+			}
+
+			@include device-width(500px){
+				font-size: 0.8em;
+			}
+
+			p:first-child{
+				margin-top: 0;
+			}
+		}
+	}// #page-content
+
+	#page-menu{
+		float: right;
+		padding-left: 2em;
+
+		@include device-width(950px){
+			width: 100%;
+		}
+
+		header{
+			@extend %header;
+
+			h1{
+				margin: 0;
+				font-size: 1.25em;
+				font-weight: 400;
+			}
+
+			@include device-width(950px){
+				display: none;
+			}
+		}
+
+		.menu{
+			@extend %notalist;
+
+			@include device-width(950px){
+				margin-bottom: 2em;
+				border-bottom: 1px solid rgba(#333,0.2);
+			}
+
+			li.menu-item{
+				&.current-menu-item{
+					a{
+						color: $red;
+					}
+				}
+
+				@include device-width(950px){
+					display: inline-block;
+					margin-right: 1em;
+					margin-bottom: 0.5em;
+					font-size: 0.9em;
+
+					&:last-child{
+						margin-left: 0;
+					}
+				}
+
+				@include device-width(750px){
+					font-size: 0.8em;
+				}
+			}// li.menu-item
+
+			a{
+				color: #333;
+				@include single-transition(color,.3s);
+
+				&:hover{
+					color: $red;
+				}
+			}
+
+		}// .menu
+
+	}// #page-menu
+
+}// #page

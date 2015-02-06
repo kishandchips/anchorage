@@ -23,6 +23,12 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+.signature{
+    display: block;
+    margin: 3em 0;
+    text-align: center;
+}
+
 // ==========================================================================
 // Base styles
 // ==========================================================================
@@ -34,6 +40,10 @@ html, body{
 body {
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
+
+    &.noscroll{
+        overflow: hidden;
+    }
 }
 
 ::-moz-selection {

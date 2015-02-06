@@ -7,6 +7,7 @@ $template_directory_uri = get_template_directory_uri();
 	add_editor_style('/css/editor-style.css');
 	register_nav_menus(array(
 		'header_main' => 'Header Menu',
+		'pages_menu' => 'Pages Menu',
 		'footer_main' => 'Footer Menu')
 	);
 
@@ -21,6 +22,7 @@ $template_directory_uri = get_template_directory_uri();
 	add_action("gform_field_standard_settings", "custom_gform_standard_settings", 10, 2);
 	add_action('gform_enqueue_scripts',"custom_gform_enqueue_scripts", 10, 2);
 	add_action( 'init', 'create_post_type' );
+	add_action( 'widgets_init', 'my_sidebars' );
 	// add_action( 'init', 'create_custom_categories' );
 	// add_action( 'pre_get_posts', 'custom_posts_per_page' );
 	// add_action( 'admin_menu', 'my_remove_menu_pages',999 );
@@ -58,6 +60,22 @@ function custom_scripts(){
 		'template' => $template_directory_uri,
 		'base' => site_url(),
 	));
+}
+
+// Register Sidebars
+function my_sidebars() {
+	/* Register the 'booking' sidebar. */
+	register_sidebar(
+		array(
+			'id' => 'booking',
+			'name' => __( 'Booking' ),
+			'description' => __( 'Booking Sidebar' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>'
+		)
+	);
 }
 
 // ACF
@@ -144,7 +162,7 @@ function create_post_type() {
 function add_after_post_content($content) {
 	global $template_directory_uri;
 
-	if(!is_feed() && !is_home() && is_singular() && is_main_query()) {
+	if(is_single()) {
 		$content .= '<span class="signature"><img src="'. $template_directory_uri .'/images/wave-signature.png"></span>';
 	}
 	return $content;
