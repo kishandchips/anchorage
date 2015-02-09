@@ -520,7 +520,7 @@ a {
   content: "\ea3e"; }
 
 .gform_body ul.gform_fields,
-.gform_body ul.gfield_radio, #header nav ul, #footer nav ul, #apartment .box-list, #page #page-menu .menu {
+.gform_body ul.gfield_radio, #header nav ul, #footer nav ul, #apartment .box-list, #page #page-menu .menu, #markers {
   margin: 0;
   padding: 0;
   list-style-type: none; }
@@ -1160,25 +1160,6 @@ body {
         width: 10px; } }
 
 /* ==========================================================================
-   Map
-   ========================================================================== */
-#map-wrapper {
-  position: relative; }
-  #map-wrapper .map-title {
-    position: absolute;
-    top: 0;
-    left: 2em;
-    max-width: 300px;
-    z-index: 9999; }
-  #map-wrapper #map {
-    position: relative;
-    height: 1000px;
-    margin: 0;
-    padding: 0; }
-    #map-wrapper #map img {
-      max-width: inherit; }
-
-/* ==========================================================================
    Footer
    ========================================================================== */
 #footer {
@@ -1676,6 +1657,25 @@ body {
       transition: color 0.3s; }
       #page #page-menu .menu a:hover {
         color: #ff6344; }
+
+/* ==========================================================================
+   Map
+   ========================================================================== */
+#map-wrapper {
+  position: relative; }
+  #map-wrapper .map-title {
+    position: absolute;
+    top: 0;
+    left: 3em;
+    max-width: 300px;
+    z-index: 9999; }
+  #map-wrapper #map {
+    position: relative;
+    height: 1000px;
+    margin: 0;
+    padding: 0; }
+    #map-wrapper #map img {
+      max-width: inherit; }
 
 .lt-ie9 body {
   width: 1440px;

@@ -117,9 +117,7 @@
 			},
 
 			setup:function(){
-				var lat = this.element.data('lat');
-				var lng = this.element.data('lng');
-				var margate = new google.maps.LatLng(lat,lng);
+				var margate = new google.maps.LatLng(this.element.data('lat'),this.element.data('lng'));
 
 		        var mapOptions = {
 		          center: margate,
@@ -167,7 +165,7 @@
 
 					markers.push(marker);
 
-					google.maps.event.addListener(marker, 'click', function(){
+					el.on('click', function(){
 						$.each(markers, function(index){
 							markers[index].setAnimation(null);	
 						})
