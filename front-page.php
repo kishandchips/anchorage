@@ -30,7 +30,7 @@
 						
 						<div class="col-1-3">
 							<a href="<?php the_permalink(); ?>">
-								<div class="inner" style="background-color: <?php the_sub_field('overlay_colour'); ?>">
+								<div class="inner" style="border-color: <?php the_sub_field('overlay_colour'); ?>; background-color: <?php the_sub_field('overlay_colour'); ?>">
 									<figure style="background-image:url(<?php echo $bg_image['sizes']['home-square']; ?>);"></figure>
 
 									<div class="overlay">

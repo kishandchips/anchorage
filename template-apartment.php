@@ -21,7 +21,7 @@
 			</header><!-- #hero -->
 		<?php endif; ?>
 
-		<div id="booking-bar">
+<!-- 		<div id="booking-bar">
 			<div class="floater-wrap">
 				<div class="booking-form">
 				</div>
@@ -32,10 +32,18 @@
 					
 				</div>
 			</div>
-		</div><!-- #booking-bar -->
+		</div> -->
+
+		<div id="booking" class="section off-white">
+			<div class="container">
+				<?php if(have_posts()): while(have_posts()): the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile;endif; ?>
+			</div>
+		</div>
 
 		<div class="intro section yellow">
-
+		
 			<div class="container">
 				<div class="left-wrapper">
 

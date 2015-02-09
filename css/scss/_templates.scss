@@ -38,14 +38,19 @@
 
 		.inner{
 			position: relative;
-			padding: 1em;
+			overflow: hidden;
+			border-width:1em;
+			border-style:solid;
 			
 			figure{
 				height: 400px;
-				background-size: 102%;
+				padding: 1em;
+				background-size: cover;
 				background-position: center;
 				@include opacity(0.2);
+				@include scale(1);
 				@include transition(all,.5s);
+
 
 				@include device-width(500px){
 					height: 300px;
@@ -54,7 +59,7 @@
 
 			&:hover{
 				figure{
-					background-size: 120%;
+					@include scale(1.22);
 				}
 			}
 		}
@@ -116,55 +121,55 @@
 #apartment{
 	position: relative;
 
-	#booking-bar{
-		position: absolute;
-		top:0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		margin-top: 40%;
+	// #booking-bar{
+	// 	position: absolute;
+	// 	top:0;
+	// 	right: 0;
+	// 	left: 0;
+	// 	bottom: 0;
+	// 	margin-top: 40%;
 
-		@include device-width(1200px){
-			position: relative;
-			margin-top: 0;
-		}
+	// 	@include device-width(1200px){
+	// 		position: relative;
+	// 		margin-top: 0;
+	// 	}
 
-		&.fixed{
-			margin-top: 0;
-		}
+	// 	&.fixed{
+	// 		margin-top: 0;
+	// 	}
 
-		.floater-wrap{
-			@extend .clearfix;
-			position: absolute;
-			left: 0;
-			right: 0;
-			max-width: 1440px;
-			margin: 0 auto;
+	// 	.floater-wrap{
+	// 		@extend .clearfix;
+	// 		position: absolute;
+	// 		left: 0;
+	// 		right: 0;
+	// 		max-width: 1440px;
+	// 		margin: 0 auto;
 
-			@include device-width(1200px){
-				display: none;
-			}
-		}
+	// 		@include device-width(1200px){
+	// 			display: none;
+	// 		}
+	// 	}
 
-		.container{
-			display: none;
+	// 	.container{
+	// 		display: none;
 
-			@include device-width(1200px){
-				display: block;
-			}
-		}
+	// 		@include device-width(1200px){
+	// 			display: block;
+	// 		}
+	// 	}
 
-		.booking-form{
-			float: right;
-			height: 200px;
-			width: 200px;
-			background-color: white;
+	// 	.booking-form{
+	// 		float: right;
+	// 		height: 200px;
+	// 		width: 200px;
+	// 		background-color: white;
 
-			@include device-width(1200px){
-				float: none;
-			}
-		}
-	}// #booking-float
+	// 		@include device-width(1200px){
+	// 			float: none;
+	// 		}
+	// 	}
+	// }
 
 	.left-wrapper{
 		padding-right: 40%;

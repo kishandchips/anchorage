@@ -1,20 +1,21 @@
 /* ==========================================================================
    Generic Page Styles
    ========================================================================== */
-
+body{
+	background-color: #F7F7F7;
+}
 #ludacris{
 	position: relative;
+	max-width: 1600px;
+	margin: 0 auto;
+	background-color: #fff;
 }
 
 #main{
-	margin-top: 112px;
-
-	.admin-bar &{
-		margin-top: 80px;
-	}
+	padding-top: 112px;
 
 	.home &{
-		margin-top: 0;
+		padding-top: 0;
 	}
 }
 
@@ -23,7 +24,7 @@
    ========================================================================== */
 
 #header{
-	position: fixed;
+	position: absolute;
 	top:0;
 	left:0;
 	right:0;
@@ -243,7 +244,7 @@
 	}
 
 	.hero-text{
-		margin: 0;
+		margin: 112px 0 0 0;
 		color: #fff;
 		font-size: 5em;
 		text-align: center;
@@ -255,10 +256,10 @@
 			font-size: 0.25em;
 		}
 
-		@media screen and (max-width: 800px){
+		@media screen and (max-width: 1000px){
 			font-size: 3em;
 		}
-		@media screen and (max-width: 500px){
+		@media screen and (max-width: 800px){
 			font-size: 2em;
 		}
 	}
@@ -436,6 +437,33 @@ body.modal-open{
 	}// #owl-dots
 
 }// .owl-controls
+
+/* ==========================================================================
+   Map
+   ========================================================================== */
+
+#map-wrapper{
+	position: relative;
+
+	.map-title{
+		position: absolute;
+		top:0;
+		left: 2em;
+		max-width: 300px;
+		z-index: 9999;
+	}	
+	#map{
+		position: relative;
+		height: 1000px;
+		margin: 0; 
+		padding: 0;
+
+		img{
+			max-width: inherit;
+		}
+	}// #map
+}
+
 
 /* ==========================================================================
    Footer

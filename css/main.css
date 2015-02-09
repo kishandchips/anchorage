@@ -209,12 +209,12 @@ a {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-.row, .clearfix, #apartment #booking-bar .floater-wrap, #apartment .box-list, #apartment .review article, .container {
+.row, .clearfix, #apartment .box-list, #apartment .review article, .container {
   *zoom: 1; }
-  .row:before, .row:after, .clearfix:before, #apartment #booking-bar .floater-wrap:before, #apartment .box-list:before, #apartment .review article:before, .clearfix:after, #apartment #booking-bar .floater-wrap:after, #apartment .box-list:after, #apartment .review article:after, .container:before, .container:after {
+  .row:before, .row:after, .clearfix:before, #apartment .box-list:before, #apartment .review article:before, .clearfix:after, #apartment .box-list:after, #apartment .review article:after, .container:before, .container:after {
     content: " ";
     display: table; }
-  .row:after, .clearfix:after, #apartment #booking-bar .floater-wrap:after, #apartment .box-list:after, #apartment .review article:after, .container:after {
+  .row:after, .clearfix:after, #apartment .box-list:after, #apartment .review article:after, .container:after {
     clear: both; }
 
 .container {
@@ -862,21 +862,25 @@ textarea {
 /* ==========================================================================
    Generic Page Styles
    ========================================================================== */
+body {
+  background-color: #F7F7F7; }
+
 #ludacris {
-  position: relative; }
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  background-color: #fff; }
 
 #main {
-  margin-top: 112px; }
-  .admin-bar #main {
-    margin-top: 80px; }
+  padding-top: 112px; }
   .home #main {
-    margin-top: 0; }
+    padding-top: 0; }
 
 /* ==========================================================================
    Header
    ========================================================================== */
 #header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -1019,7 +1023,7 @@ textarea {
     padding: 1em;
     text-align: center; }
   .hero .hero-text {
-    margin: 0;
+    margin: 112px 0 0 0;
     color: #fff;
     font-size: 5em;
     text-align: center;
@@ -1028,10 +1032,10 @@ textarea {
       display: block;
       margin-top: 20px;
       font-size: 0.25em; }
-    @media screen and (max-width: 800px) {
+    @media screen and (max-width: 1000px) {
       .hero .hero-text {
         font-size: 3em; } }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 800px) {
       .hero .hero-text {
         font-size: 2em; } }
 
@@ -1156,6 +1160,25 @@ textarea {
         width: 10px; } }
 
 /* ==========================================================================
+   Map
+   ========================================================================== */
+#map-wrapper {
+  position: relative; }
+  #map-wrapper .map-title {
+    position: absolute;
+    top: 0;
+    left: 2em;
+    max-width: 300px;
+    z-index: 9999; }
+  #map-wrapper #map {
+    position: relative;
+    height: 1000px;
+    margin: 0;
+    padding: 0; }
+    #map-wrapper #map img {
+      max-width: inherit; }
+
+/* ==========================================================================
    Footer
    ========================================================================== */
 #footer {
@@ -1213,13 +1236,20 @@ textarea {
           background-size: inherit; } }
   #home .home-items .inner {
     position: relative;
-    padding: 1em; }
+    overflow: hidden;
+    border-width: 1em;
+    border-style: solid; }
     #home .home-items .inner figure {
       height: 400px;
-      background-size: 102%;
+      padding: 1em;
+      background-size: cover;
       background-position: center;
       filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=20);
       opacity: 0.2;
+      -moz-transform: scale(1, 1);
+      -ms-transform: scale(1, 1);
+      -webkit-transform: scale(1, 1);
+      transform: scale(1, 1);
       -moz-transition: all, 0.5s;
       -o-transition: all, 0.5s;
       -webkit-transition: all, 0.5s;
@@ -1228,7 +1258,10 @@ textarea {
         #home .home-items .inner figure {
           height: 300px; } }
     #home .home-items .inner:hover figure {
-      background-size: 120%; }
+      -moz-transform: scale(1.22, 1.22);
+      -ms-transform: scale(1.22, 1.22);
+      -webkit-transform: scale(1.22, 1.22);
+      transform: scale(1.22, 1.22); }
   #home .home-items .overlay {
     position: absolute;
     top: 1em;
@@ -1271,41 +1304,6 @@ textarea {
 
 #apartment {
   position: relative; }
-  #apartment #booking-bar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    margin-top: 40%; }
-    @media only screen and (max-width: 1200px) {
-      #apartment #booking-bar {
-        position: relative;
-        margin-top: 0; } }
-    #apartment #booking-bar.fixed {
-      margin-top: 0; }
-    #apartment #booking-bar .floater-wrap {
-      position: absolute;
-      left: 0;
-      right: 0;
-      max-width: 1440px;
-      margin: 0 auto; }
-      @media only screen and (max-width: 1200px) {
-        #apartment #booking-bar .floater-wrap {
-          display: none; } }
-    #apartment #booking-bar .container {
-      display: none; }
-      @media only screen and (max-width: 1200px) {
-        #apartment #booking-bar .container {
-          display: block; } }
-    #apartment #booking-bar .booking-form {
-      float: right;
-      height: 200px;
-      width: 200px;
-      background-color: white; }
-      @media only screen and (max-width: 1200px) {
-        #apartment #booking-bar .booking-form {
-          float: none; } }
   #apartment .left-wrapper {
     padding-right: 40%; }
     @media only screen and (max-width: 1200px) {
