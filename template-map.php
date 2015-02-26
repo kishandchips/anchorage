@@ -24,13 +24,13 @@
 					<?php $location = get_sub_field('location'); ?>
 
 					<li class="marker match-block-container" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" data-icon="<?php the_sub_field('marker_image'); ?>">
-						<div class="match-block-1-2">
+						<div class="content-wrap match-block-1-2">
 							<div class="inner">
 								<h4><?php the_sub_field('title'); ?></h4>
 								<?php the_sub_field('description'); ?>								
 							</div>
 						</div>
-						<div class="match-block-1-2">
+						<div class="image match-block-1-2">
 							<img src="<?php the_sub_field('image'); ?>" alt="">
 						</div>
 					</li>

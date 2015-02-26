@@ -20,7 +20,7 @@
 					
 					<div class="content-wrap match-block-1-2">
 
-						<div class="article-inner">
+						<div class="inner">
 								<div class="article-category">
 									<?php
 									$category = get_the_category(); 

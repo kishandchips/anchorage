@@ -45,6 +45,7 @@
 
 				$('.show-more').on('click', function(){
 					$(this).parent().siblings('.hide-more').toggleClass('expand');
+					$(this).hide();
 				});
 			},
 
@@ -61,7 +62,7 @@
 							formH = $('.booking-form').outerHeight();
 						
 						main.w.on('load', function(){
-							// barH = bar.outerHeight(true);
+							barH = bar.outerHeight(true);
 						});
 
 						main.w.on('scroll', function() {

@@ -313,8 +313,6 @@
 			// needs latest Compass, add '@import "compass"' to your scss
 			@include filter-gradient(#ffffff, #faf6ee, vertical); // IE6-9
 			@include background-image(linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(250,246,238,1) 100%));
-
-
 		}
 
 		&.expand{
@@ -368,6 +366,15 @@
 
 			.review-text{
 				margin-top: 0;
+			}
+		}// article
+
+		.hide-more{
+			height: 150px;
+
+			&:after{
+				@include filter-gradient(#ffffff, #ffed9a, vertical); // IE6-9
+				@include background-image(linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,237,154,1) 100%));
 			}
 		}
 
@@ -429,7 +436,7 @@
 			}
 
 			&:nth-child(even){
-				.article-inner{
+				.inner{
 					padding: 5%;
 					padding-right: 0;
 					@include translateX(100%);
@@ -464,7 +471,7 @@
 			}
 		}// .content-wrap
 
-		.article-inner{
+		.inner{
 			float: right;
 			max-width: 720px;
 			margin-left: 10%;
@@ -608,7 +615,7 @@
 			&:first-child{
 				background-color: $green;
 
-				.article-inner{
+				.inner{
 					float: right;
 					margin-left: 10%;
 					padding-left: 0;
@@ -627,7 +634,7 @@
 			background-size: cover;
 		}
 
-		.article-inner{
+		.inner{
 			max-width: 720px;
 			padding: 5%;
 		
@@ -658,7 +665,7 @@
 			@include device-width(500px){
 				font-size: 80%;
 			}
-		}// .article-inner
+		}// .inner
 
 		.button{
 			margin-top: 1em;
@@ -794,30 +801,52 @@
 /* ==========================================================================
    Map
    ========================================================================== */
+#margate-map{
+	
+	#map-wrapper{
+		position: relative;
 
-#map-wrapper{
-	position: relative;
+		.map-title{
+			position: absolute;
+			top:0;
+			left: 3em;
+			max-width: 300px;
+			z-index: 9999;
+		}
 
-	.map-title{
-		position: absolute;
-		top:0;
-		left: 3em;
-		max-width: 300px;
-		z-index: 9999;
+		#map{
+			position: relative;
+			height: 1000px;
+			margin: 0; 
+			padding: 0;
+
+			img{
+				max-width: inherit;
+			}
+		}// #map
 	}
 
-	#map{
-		position: relative;
-		height: 1000px;
-		margin: 0; 
-		padding: 0;
+	#markers{
+		@extend %notalist;
 
-		img{
-			max-width: inherit;
+		.match-block-container{
+			.inner{
+				max-width: 720px;
+				margin-left: 10%;
+				padding: 5% 5% 5% 0;
+			}
 		}
-	}// #map
-}
 
-#markers{
-	@extend %notalist;
-}
+		.marker:nth-child(even){
+			.content-wrap{
+				float: right;
+			}
+
+			.image{
+				@include translateX(-100%);
+			}
+		}
+	}// #markers	
+
+}// #margate-map
+

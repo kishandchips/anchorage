@@ -133,7 +133,7 @@
 									<div class="article-image">
 										<?php the_post_thumbnail(); ?>
 									</div>
-									<div class="article-content">
+									<div class="article-content hide-more">
 										<span class="review-name">
 											<?php the_title(); ?>
 										</span>
@@ -143,6 +143,11 @@
 										<p class="review-date">
 											<?php the_time('F Y'); ?>
 										</p>										
+									</div>
+									<div class="text-right">
+										<button class="show-more">
+											Read More
+										</button>							
 									</div>
 								</article>
 							<?php endwhile; ?>
