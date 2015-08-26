@@ -4,6 +4,21 @@
 
 #home{
 
+	.owl-carousel {
+		.slide {
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					z-index: 1;
+					background: rgba(0,0,0,0.4);
+				}						
+		}
+	}	
+
 	.home-items{
 		margin-top: 60px;
 		margin-bottom: 120px;
@@ -119,16 +134,6 @@
 	#slider {
 		.owl-item.active {
 			.slide {
-				&:after {
-					content: '';
-					position: absolute;
-					left: 0;
-					top: 0;
-					height: 100%;
-					width: 100%;
-					z-index: 1;
-					background: rgba(0,0,0,0.4);
-				}			
 
 				.valign {
 					z-index: 2;

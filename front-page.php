@@ -11,7 +11,6 @@
 				?>
 
 				<div class="slide">
-
 				  	<img src="<?php echo $image[url]; ?>" alt="">
 					<div class="valign">
 						<h2 class="hero-text">
@@ -19,7 +18,6 @@
 							<span><?php _e(the_sub_field('hero_tagline'), 'anchorage'); ?></span>
 						</h2>
 					</div>	
-
 				</div>
 
 			<?php endwhile; ?>

@@ -72,6 +72,7 @@
 											 ?>
 											<a class="fancybox-thumb" rel="fancybox-thumb" href="<?php echo $image_src[0]; ?>" title="">
 										  		<?php echo wp_get_attachment_image($image_id, 'community-grid'); ?>									
+										  		<span class="icon"></span>
 										  	</a>
 										</div>
 									</li>

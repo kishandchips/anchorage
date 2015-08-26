@@ -27,7 +27,7 @@
 			});
 
 			$("a.fancybox, .fancybox a").fancybox({
-				minHeight: 370,
+				minHeight: 340,
 				openEffect : 'fade',
 				closeEffect	: 'fade'
 			});

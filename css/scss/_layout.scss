@@ -664,6 +664,11 @@ body.modal-open{
 			color: #fff;
 			background-color: #ffa00b;
 
+			.owl-stage-outer:after {
+				left: 20px;
+				right: auto;
+			}
+
 			.owl-item {
 				.slide {
 					.content {

@@ -409,7 +409,8 @@ img {
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%); }
+  transform: translateY(-50%);
+  z-index: 5; }
 
 .alignleft {
   float: left;
@@ -785,17 +786,20 @@ textarea {
   overflow: hidden;
   /* fix for flashing background */
   -webkit-transform: translate3d(0px, 0px, 0px); }
-  .owl-carousel .owl-stage-outer:after {
+  .owl-carousel .owl-stage-outer .icon {
     display: block;
     content: '';
     position: absolute;
     bottom: 20px;
     right: 20px;
-    width: 68px;
-    height: 68px;
+    width: 45px;
+    height: 45px;
     background: url(../images/images-icon.png) left top no-repeat;
     cursor: pointer; }
+    .home .owl-carousel .owl-stage-outer .icon, .blog .owl-carousel .owl-stage-outer .icon {
+      display: none; }
 
+.owl-carousel .owl-stage-outer
 .owl-controls .owl-nav {
   display: block; }
 
@@ -949,9 +953,9 @@ textarea {
   left: 5%; }
 
 .owl-dots .owl-dot {
-  width: 20px;
+  width: 10px;
   border: 2px solid #FFF;
-  height: 20px;
+  height: 10px;
   border: 2px solid #FFF;
   display: inline-block;
   border-radius: 50%;
@@ -1391,6 +1395,9 @@ body {
 #az-content .owl-carousel:nth-child(2n+2) {
   color: #fff;
   background-color: #ffa00b; }
+  #az-content .owl-carousel:nth-child(2n+2) .owl-stage-outer:after {
+    left: 20px;
+    right: auto; }
   #az-content .owl-carousel:nth-child(2n+2) .owl-item .slide .content {
     float: right;
     padding: 3% 5%; }
@@ -1461,6 +1468,15 @@ body {
     .request-a-book li.owners:before {
       color: #046cb6; }
 
+#home .owl-carousel .slide:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4); }
 #home .home-items {
   margin-top: 60px;
   margin-bottom: 120px; }
@@ -1550,15 +1566,6 @@ body {
       opacity: 1; }
 #home .owl-nav {
   display: none; }
-#home #slider .owl-item.active .slide:after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.4); }
 #home #slider .owl-item.active .slide .valign, #home #slider .owl-item.active .slide #header #menu-toggle, #header #home #slider .owl-item.active .slide #menu-toggle, #home #slider .owl-item.active .slide .owl-controls .owl-nav, .owl-controls #home #slider .owl-item.active .slide .owl-nav {
   z-index: 2; }
 

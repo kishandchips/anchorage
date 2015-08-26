@@ -14,6 +14,7 @@
 				<div class="slide">
 					<a href="<?php echo $image['sizes']['slider']; ?>" rel='fancybox-thumb'>
 						<img src="<?php echo $image['sizes']['slider']; ?>" alt=""> 
+						<span class="icon"></span>
 					</a>
 				</div>
 				<?php endforeach; ?>
