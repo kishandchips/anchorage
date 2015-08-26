@@ -8,35 +8,21 @@
 	<div id="apartment">
 		<?php $images = get_field('images'); ?>
 		<?php if($images): ?>
-			<header id="slider">
+			<header id="sliderke" class="owl-carousel" data-loop="false">
 
 				<?php foreach ($images as $image): ?>
 				<div class="slide">
-					<figure style="background-image:url(<?php echo $image['sizes']['slider']; ?>)">
+					<a href="<?php echo $image['sizes']['slider']; ?>" rel='fancybox-thumb'>
 						<img src="<?php echo $image['sizes']['slider']; ?>" alt=""> 
-					</figure>
+					</a>
 				</div>
 				<?php endforeach; ?>
 
 			</header><!-- #hero -->
 		<?php endif; ?>
 
-		<div id="booking-bar">
-			<div class="floater-wrap">
-				<div class="booking-form">
-					
-				</div>
-			</div>
-			
-			<div class="container">
-				<div class="booking-form">
-					
-				</div>
-			</div>
-		</div><!-- #booking-bar -->
-
 		<div class="intro section yellow">
-
+		
 			<div class="container">
 				<div class="left-wrapper">
 
@@ -45,6 +31,12 @@
 						<?php the_field('intro_text'); ?>
 					</div>				
 				</div><!-- .left-wrapper -->
+				<div class="right-wrapper">
+					<div class="request">
+						<span><?php the_field('request_price'); ?></span>
+						<a href="#request-a-book" class="btn fancybox"><?php _e('Request a booking'); ?></a>
+					</div>
+				</div>
 			</div><!-- .container -->
 
 		</div><!-- .intro section -->
@@ -104,79 +96,89 @@
 
 					</div><!-- .section-row -->
 
+					<div class="section-row host section">
+						<h2 class="section-heading"><?php _e('About the Hosts', 'anchorage'); ?></h2>
+
+							<div class="row">
+								<div class="col-2-5">
+									<img src="<?php the_field('hosts_image'); ?>"> 
+								</div>
+								<div class="col-3-5">
+									<?php the_field('hosts_text'); ?>
+								</div>									
+							</div>
+
+					</div><!-- .section-row -->					
+
 				</div><!-- .left-wrapper -->
-			</div><!-- container -->
+<!-- 				<div class="sticky-wrapper">
+					<div id="sticky-request" class="request">
+						<span><?php the_field('request_price'); ?></span>
+						<a href="#request-a-book" class="btn fancybox"><?php _e('Request a booking'); ?></a>
+					</div>				
+				</div>
+ -->			</div><!-- container -->
 			
 		</div><!-- .information-section -->
 
-		<?php $reviews = new WP_Query( array('post_type' => 'reviews') ); ?>
-		<?php if($reviews->have_posts()): ?>
 
-			<div class="review section yellow">
-				
-				<div class="container">
-					<div class="left-wrapper">
+		<div id="margate-map">
 
-						<div class="section-row">
-							<h2 class="section-heading"><?php _e('Reviews', 'anchorage'); ?></h2>
-							
-							<div class="section-content review-list">
-							<?php while($reviews->have_posts()) : $reviews->the_post(); ?>
-								<article>
-									<div class="article-image">
-										<?php the_post_thumbnail(); ?>
+			<?php 
+				$args = array (
+					'page_id' => '10'
+				);
+
+				$query = new WP_Query( $args );
+			 ?>
+
+			<?php while ( $query->have_posts() ) : $query->the_post(); ?>
+				<?php 
+					$location = get_field('google_map');
+					if( ! empty($location) ):
+				?>
+				<div id="map-wrapper">
+					<div class="map-title">
+						<h3><?php _e('Margate'); ?></h3>
+						<p>The Anchorage is only a few minutes walk away from the sea and amenities.</p>
+						<a class="button-outline" href="<?php the_permalink(10); ?>">See our A-Z</a>
+					</div>
+					<div id="map" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
+				</div><!-- #map-wrapper -->
+
+				<?php if( have_rows('google_markers') ): ?>
+					<div id="locations">
+						<ul id="markers">
+						<?php while ( have_rows('google_markers') ) : the_row(); ?>
+							<?php $location = get_sub_field('location'); ?>
+
+							<li class="marker match-block-container" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>" data-icon="<?php the_sub_field('marker_image'); ?>">
+								<div class="content-wrap match-block-1-2">
+									<div class="inner">
+										<h4><?php the_sub_field('title'); ?></h4>
+										<?php the_sub_field('description'); ?>								
 									</div>
-									<div class="article-content">
-										<span class="review-name">
-											<?php the_title(); ?>
-										</span>
-										<div class="review-text">
-											<?php the_content(); ?>
+									<div class="popup">
+										<div class="pupup-inner">
+											<?php the_sub_field('popup_content'); ?>								
 										</div>
-										<p class="review-date">
-											<?php the_time('F Y'); ?>
-										</p>										
 									</div>
-								</article>
-							<?php endwhile; ?>
-							</div>
-						</div><!-- .section-row -->
-
-					</div><!-- .left-wrapper -->
-				</div><!-- .container -->
-
-			</div><!-- .review section -->
-
-		<?php endif; ?>
-		<?php wp_reset_query(); ?>
-
-		<div class="host section off-white">
-
-				<div class="container">
-					<div class="left-wrapper">
-
-						<div class="section-row">
-							<h2 class="section-heading"><?php _e('About the Hosts', 'anchorage'); ?></h2>
-
-								<div class="row">
-									<div class="col-2-5">
-										<img src="<?php the_field('hosts_image'); ?>"> 
-									</div>
-									<div class="col-3-5">
-										<?php the_field('hosts_text'); ?>
-									</div>									
 								</div>
+								<div class="image match-block-1-2">
+									<img src="<?php the_sub_field('image'); ?>" alt="">
+								</div>
+							</li>
 
-						</div><!-- .section-row -->
+						<?php endwhile; ?>
+						</ul>				
+					</div><!-- #locations -->
+				<?php endif; ?>
 
-					</div><!-- .left-wrapper -->
-				</div><!-- .container -->
+				<?php endif; ?>
 
-		</div><!-- .host section -->
+			<?php endwhile; ?>
 
-		<div class="map">
-			
-		</div><!-- .map -->
+		</div><!-- #margate-map -->
 
 	</div><!-- #apartment -->
 

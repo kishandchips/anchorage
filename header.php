@@ -9,6 +9,7 @@
 		<title><?php wp_title('-','true','right'); ?><?php bloginfo('name'); ?></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
+        <link href="<?php echo get_template_directory_uri(); ?>/images/misc/favicon.png" rel="shortcut icon" type="image/x-icon">
 
         <?php wp_head(); ?>
     </head>

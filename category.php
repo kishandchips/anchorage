@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php
-	$page_id = get_queried_object_id();
+	$page_id = 12;
 ?>
 	<div id="community">
 
@@ -14,8 +14,7 @@
 					</div>	
 
 				</li>
-		</div>		
-
+		</div>
 		<div id="blog-categories">
 			<?php 
 			    $args = array(
@@ -47,7 +46,6 @@
 			    wp_list_categories( $args ); 
 			?>
 		</div>
-
 		<?php if(have_posts()): ?>
 			<div class="article-list">
 

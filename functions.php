@@ -7,13 +7,14 @@ $template_directory_uri = get_template_directory_uri();
 	add_editor_style('/css/editor-style.css');
 	register_nav_menus(array(
 		'header_main' => 'Header Menu',
+		'pages_menu' => 'Pages Menu',
 		'footer_main' => 'Footer Menu')
 	);
 
 // Image sizes
 	add_image_size( 'slider', 2000, 9999, false );
 	add_image_size( 'home-square', 400, 400, true );
-	add_image_size( 'community-grid', 800, 493, true );
+	add_image_size( 'community-grid', 840, 493, true );
 
 // Add Actions
 	add_action( 'wp_enqueue_scripts', 'custom_styles', 30 );
@@ -21,6 +22,7 @@ $template_directory_uri = get_template_directory_uri();
 	add_action("gform_field_standard_settings", "custom_gform_standard_settings", 10, 2);
 	add_action('gform_enqueue_scripts',"custom_gform_enqueue_scripts", 10, 2);
 	add_action( 'init', 'create_post_type' );
+	add_action( 'widgets_init', 'my_sidebars' );
 	// add_action( 'init', 'create_custom_categories' );
 	// add_action( 'pre_get_posts', 'custom_posts_per_page' );
 	// add_action( 'admin_menu', 'my_remove_menu_pages',999 );
@@ -38,12 +40,15 @@ $template_directory_uri = get_template_directory_uri();
 	add_filter("gform_tabindex", "gform_tabindexer");
 	add_filter("gform_submit_button", "form_submit_button", 10, 2);
 	add_filter('the_content', 'add_after_post_content');
+	add_filter( 'wp_list_categories', 'tax_cat_active', 10, 2 );	
 
 // Functions
 function custom_styles(){
 	global $template_directory_uri;
 
 	wp_enqueue_style('fonts', 'http://fast.fonts.net/cssapi/3572e405-0209-478c-af7b-f4d6cd97e433.css' );
+	wp_enqueue_style('flare', $template_directory_uri . '/css/jquery.fancybox.css');
+	wp_enqueue_style('flarethumbs', $template_directory_uri . '/css/jquery.fancybox-thumbs.css');
 	wp_enqueue_style('main', $template_directory_uri . '/css/main.css');
 }
 
@@ -52,12 +57,36 @@ function custom_scripts(){
 
 	wp_enqueue_script('modernizr', $template_directory_uri . '/js/plugins/modernizr-2.6.1.min.js', array('jquery'), '', true);
 	wp_enqueue_script('owl', $template_directory_uri . '/js/plugins/owl.carousel.min.js', array('jquery'), '', true);
-	wp_enqueue_script('main', $template_directory_uri . '/js/min/main-min.js', array('jquery'), '', true);
+	wp_enqueue_script('fancy', $template_directory_uri . '/js/plugins/jquery.fancybox.js', array('jquery'), '', true);
+	wp_enqueue_script('fancythumb', $template_directory_uri . '/js/plugins/jquery.fancybox-thumbs.js', array('jquery'), '', true);
+	wp_enqueue_script('map', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD1q83OnpllJuILtl044r3NwxJPwqHLTJ0', array('jquery'), '', true);
+
+	// if (is_page(8)) {
+	// 	wp_enqueue_script('sticky', $template_directory_uri . '/js/plugins/jquery.hc-sticky.min.js', array('jquery'), '', true);
+	// }
+
+	wp_enqueue_script('main', $template_directory_uri . '/js/main.js', array('jquery'), '', true);
 
 	wp_localize_script( 'main', 'wordpress', array(
 		'template' => $template_directory_uri,
 		'base' => site_url(),
 	));
+}
+
+// Register Sidebars
+function my_sidebars() {
+	/* Register the 'booking' sidebar. */
+	register_sidebar(
+		array(
+			'id' => 'booking',
+			'name' => __( 'Booking' ),
+			'description' => __( 'Booking Sidebar' ),
+			'before_widget' => '<div id="%1$s" class="widget %2$s">',
+			'after_widget' => '</div>',
+			'before_title' => '<h3 class="widget-title">',
+			'after_title' => '</h3>'
+		)
+	);
 }
 
 // ACF
@@ -144,62 +173,22 @@ function create_post_type() {
 function add_after_post_content($content) {
 	global $template_directory_uri;
 
-	if(!is_feed() && !is_home() && is_singular() && is_main_query()) {
+	if(is_single()) {
 		$content .= '<span class="signature"><img src="'. $template_directory_uri .'/images/wave-signature.png"></span>';
 	}
 	return $content;
 }
 
+function tax_cat_active( $output, $args ) {
 
-// // Register Taxonomies
-// function create_custom_categories() {
+  if(is_single()){
+    global $post;
 
-// 	$post_labels = array(
-// 		'name'					=> _x( 'post Categories', 'Taxonomy plural name', 'text-domain' ),
-// 		'singular_name'			=> _x( 'post Category', 'Taxonomy singular name', 'text-domain' ),
-// 		'search_items'			=> __( 'Search post Categories', 'text-domain' ),
-// 		'popular_items'			=> __( 'Popular post Categories', 'text-domain' ),
-// 		'all_items'				=> __( 'All post Categories', 'text-domain' ),
-// 		'parent_item'			=> __( 'Parent post Category', 'text-domain' ),
-// 		'parent_item_colon'		=> __( 'Parent post Category', 'text-domain' ),
-// 		'edit_item'				=> __( 'Edit post Category', 'text-domain' ),
-// 		'update_item'			=> __( 'Update post Category', 'text-domain' ),
-// 		'add_new_item'			=> __( 'Add New post Category', 'text-domain' ),
-// 		'new_item_name'			=> __( 'New post Category', 'text-domain' ),
-// 		'add_or_remove_items'	=> __( 'Add or remove post Category', 'text-domain' ),
-// 		'choose_from_most_used'	=> __( 'Choose from most used post Categories', 'text-domain' ),
-// 		'menu_name'				=> __( 'post Category', 'text-domain' ),
-// 	);
+    $terms = get_the_terms( $post->ID, $args['taxonomy'] );
+    foreach( $terms as $term )
+        if ( preg_match( '#cat-item-' . $term ->term_id . '#', $output ) )
+            $output = str_replace('cat-item-'.$term ->term_id, 'cat-item-'.$term ->term_id . ' current-cat', $output);
+  }
 
-// 	$post_args = array(
-// 		'labels'            => $post_labels,
-// 		'show_admin_column' => true,
-// 		'query_var'         => true,
-// 		'query_var'         => true,
-// 	);
-
-// 	register_taxonomy( 'post-category', array( 'post' ), $post_args );
-// }
-
-// // Register Sidebars
-// function my_sidebars() {
-// 	/* Register the 'primary' sidebar. */
-// 	register_sidebar(
-// 		array(
-// 			'id' => 'ID',
-// 			'name' => __( 'Name' ),
-// 			'description' => __( 'Description' ),
-// 			'before_widget' => '<div id="%1$s" class="widget %2$s">',
-// 			'after_widget' => '</div>',
-// 			'before_title' => '<h3 class="widget-title">',
-// 			'after_title' => '</h3>'
-// 		)
-// 	);
-// }
-
-// // Posts per page
-// function custom_posts_per_page($query){
-// 	if( $query->is_search()){
-// 		$query->set('posts_per_page', 15);
-// 	}
-// }
+  return $output;
+}

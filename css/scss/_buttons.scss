@@ -74,3 +74,40 @@ button{
 		border-bottom: 3px solid $red;
 	}
 }
+
+.btn {
+    padding: 0.5em 1em;
+    color: #fff;
+    background-color: #2dcea2;
+    border-bottom: none;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-transition: all, 0.3s;
+    -o-transition: all, 0.3s;
+    -webkit-transition: all, 0.3s;
+    transition: all, 0.3s;	
+    display: inline-block;
+    margin-top: 2em;
+
+    &:hover {
+		background-color: #28b992;
+        border-bottom: none;    	
+    }    
+}
+
+.button-outline {
+    padding: 0.5em 1em;
+    color: #fb3000;
+    font-size: 20px;
+    border: 3px solid #fb3000;
+    @include border-radius(4px);
+    @include transition(all,.3s);
+    display: inline-block;
+
+    &:hover {
+    	border: 3px solid #2dcea2;
+    	color: #2dcea2;
+    }
+}
+

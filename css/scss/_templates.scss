@@ -38,14 +38,19 @@
 
 		.inner{
 			position: relative;
-			padding: 1em;
+			overflow: hidden;
+			border-width:1em;
+			border-style:solid;
 			
 			figure{
 				height: 400px;
-				background-size: 102%;
+				padding: 1em;
+				background-size: cover;
 				background-position: center;
 				@include opacity(0.2);
+				@include scale(1);
 				@include transition(all,.5s);
+
 
 				@include device-width(500px){
 					height: 300px;
@@ -54,7 +59,7 @@
 
 			&:hover{
 				figure{
-					background-size: 120%;
+					@include scale(1.22);
 				}
 			}
 		}
@@ -107,6 +112,31 @@
 		}// .overlay
 	}// .home-items
 
+	.owl-nav {
+		display: none;
+	}
+
+	#slider {
+		.owl-item.active {
+			.slide {
+				&:after {
+					content: '';
+					position: absolute;
+					left: 0;
+					top: 0;
+					height: 100%;
+					width: 100%;
+					z-index: 1;
+					background: rgba(0,0,0,0.4);
+				}			
+
+				.valign {
+					z-index: 2;
+				}				
+			}
+		}
+	}
+
 }// #home
 
 // ==========================================================================
@@ -116,61 +146,62 @@
 #apartment{
 	position: relative;
 
-	#booking-bar{
-		position: absolute;
-		top:0;
-		right: 0;
-		left: 0;
-		bottom: 0;
-		margin-top: 40%;
-
-		@include device-width(1200px){
-			position: relative;
-			margin-top: 0;
-		}
-
-		&.fixed{
-			margin-top: 0;
-		}
-
-		.floater-wrap{
-			@extend .clearfix;
-			position: absolute;
-			left: 0;
-			right: 0;
-			max-width: 1440px;
-			margin: 0 auto;
-
-			@include device-width(1200px){
-				display: none;
-			}
-		}
-
-		.container{
-			display: none;
-
-			@include device-width(1200px){
-				display: block;
-			}
-		}
-
-		.booking-form{
-			float: right;
-			height: 200px;
-			width: 200px;
-			background-color: white;
-
-			@include device-width(1200px){
-				float: none;
-			}
-		}
-	}// #booking-float
-
 	.left-wrapper{
-		padding-right: 40%;
+		width: 60%;
+		float: left;
 
-		@include device-width(1200px){
+		@include device-width(1200px) {
 			padding-right: 0;
+		}
+	}
+
+	.right-wrapper{
+		width: 30%;
+		float: right;
+	}	
+
+	.sticky-wrapper{
+		width: 30%;
+		float: right;
+
+		#sticky-request {
+			opacity: 0;
+
+			&.sticky {
+				opacity: 1;
+			}
+		}
+	}		
+
+	@include device-width(900px) {
+		.left-wrapper, .right-wrapper {
+			width: 100%;
+		}
+	}
+
+	.request {
+		border: 1px solid #c0c0c0;
+		border-top: 9px solid #fb3000;
+		padding: 40px;
+		@include box-sizing('border-box');
+		background: #FFF;
+	    margin-top: -2.45em;
+	    position: relative;
+	    z-index: 5000;		
+	    text-align: center;
+	    margin-bottom: -0.5em;
+
+	    @include device-width(900px) {
+ 			margin-top: 0;
+	    }
+
+		span {
+			font-size: 40px;
+			color: #333333;
+			display: inline-block;
+			border-bottom: 1px solid #c0c0c0;
+		    padding: 0 5% 1em;
+
 		}
 	}
 		
@@ -179,10 +210,13 @@
 
 		&.yellow{
 			background-color: #ffed9a;
+			padding: 2em 0 0;
 
-			.section-heading{
-				border-bottom: 1px solid #333;
-			}
+			.section-heading {
+				margin: 0;
+				padding: 0;
+				color: #000;
+			}			
 		}
 
 		&.off-white{
@@ -207,15 +241,12 @@
 	.section-content{
 		p{
 			font-size: 0.9em;
+			margin: 1.3em 0;
 		}
 	}
 
 	.intro-text{
-		font-size: 1.2em;
-
-		@include device-width(800px){
-			font-size: 1em
-		}
+		font-size: 18px;
 	}
 
 	.box-list{
@@ -229,6 +260,7 @@
 			min-width: 115px;
 			margin-right: 1.667%;
 			vertical-align: top;
+			text-align: center;
 
 			@media screen and (min-width:751px) and (max-width:1440px){
 				width: 30%;
@@ -308,8 +340,6 @@
 			// needs latest Compass, add '@import "compass"' to your scss
 			@include filter-gradient(#ffffff, #faf6ee, vertical); // IE6-9
 			@include background-image(linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(250,246,238,1) 100%));
-
-
 		}
 
 		&.expand{
@@ -364,6 +394,15 @@
 			.review-text{
 				margin-top: 0;
 			}
+		}// article
+
+		.hide-more{
+			height: 150px;
+
+			&:after{
+				@include filter-gradient(#ffffff, #ffed9a, vertical); // IE6-9
+				@include background-image(linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,237,154,1) 100%));
+			}
 		}
 
 	}// .review
@@ -382,6 +421,32 @@
 		}
 	}// .host
 
+	#margate-map #map-wrapper #map {
+		height: 825px;
+	}
+
+	#margate-map #map-wrapper .map-title {
+	    left: 5em;
+
+	    h3 {
+	    	font-size: 40px;
+	    	color: #fb3000;
+	    	margin: .5em 0;
+	    }
+
+	    p {
+	    	font-size: 18px;
+	    	color: #333333;
+	    	line-height: 1.4;
+	    }
+
+	    a.button-outline {
+    		margin-top: .5em;
+	    }
+
+
+	}
+
 }// #apartment
 
 // ==========================================================================
@@ -389,36 +454,21 @@
 // ==========================================================================
 
 #community{
-	margin-top: 112px;
 
-	.admin-bar &{
-		margin-top: 80px;
-	}
+	#slider {
+		.valign {
+		    width: 100%;
+		    text-align: center;		
+		    color: #FFF;	
 
-	.hero{
-		p{
-			color: #fff;
-			font-weight: 700;			
-		}
-
-		img{
-			@include device-width(1000px){
-				width: 30%;	
-			}
-			@include device-width(600px){
-				width: 50%;
-			}
+		    img {
+		    	margin: 0 auto;
+		    }
 		}
 	}
 
 	.article-list{
-		@extend .clearfix;
-
 		article{
-			display: table;
-			table-layout: fixed;
-			width: 100%;
-
 			&:nth-child(n+1){
 					color: #fff;
 					background-color: $blue3;
@@ -435,16 +485,14 @@
 			}
 
 			&:nth-child(even){
-				.article-content{
-					padding: 3em 0 3em 3em;
+				.inner{
+					padding: 5%;
+					padding-right: 0;
 					@include translateX(100%);
 
-					@include device-width(1400px){
-						padding: 3em;
-					}
-
 					@include device-width(950px){
-						padding: 2em 1em;
+						padding: 1em;
+						margin: 0;
 					}
 
 					@media screen and (max-width: 750px){
@@ -464,20 +512,20 @@
 		}// article
 
 		.content-wrap{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
-
-			@include device-width(750px){
-				display: block;
-				width: 100%;
+			&.match-block-1-2{
+				@include device-width(750px){
+					display: block;
+					width: 100%;
+				}				
 			}
-		}
+		}// .content-wrap
 
-		.article-content{
-			max-width: 720px;
+		.inner{
 			float: right;
-			padding: 3em 3em 3em 0;
+			max-width: 720px;
+			margin-left: 10%;
+			padding: 5%;
+			padding-left: 0;
 
 			.article-category{
 				font-weight: 700;
@@ -498,16 +546,13 @@
 				margin-top: 1em;
 			}
 
-			@include device-width(1400px){
-				padding: 3em;
-			}
-
 			@include device-width(1200px){
 				font-size: 80%;
 			}
 
 			@include device-width(950px){
-				padding: 2em 1em;
+				padding: 1em;
+				margin: 0;
 			}
 
 			@include device-width(750px){
@@ -517,15 +562,17 @@
 		}// .article-content
 
 		.article-image{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
 			padding-top: 31%;
 			background-size: cover;
 
+			&.match-block-1-2{
+				@include device-width(750px){
+					display: block;
+					width: 100%;					
+				}
+			}
+
 			@include device-width(750px){
-				display: block;
-				width: 100%;
 				padding-top:61%;
 			}
 		}// .article-image
@@ -538,87 +585,346 @@
 // ==========================================================================
 
 #single{
+
+	.hero {
+	    padding-top: 40%;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    background-position: center center;		
+	}
 	
 	#article{
+		&.container{
+			@include device-width(950px){
+				width: 100%;
+				padding: 0 1em;
+			}
+		}
+
 		.article-header{
 			text-align: center;
 
 			h1{
+				margin: 5% 0;
 				color: $red;
 				font-size: 5em;
+				line-height: 1.2;
+
+				@include device-width(950px){
+					font-size: 3em;
+				}
+				@include device-width(600px){
+					font-size: 2em;
+				}
 			}
-		}
+		}// .article-header
 
 		.article-content{
 			position: relative;
-			width: 80%;
+			width: 100%;
+			max-width: 800px;
 			margin-right: auto;
 			margin-left: auto;
 			
 			p{
 				font-size: 0.9em;
+				line-height: 1.6;
+
+				@include device-width(750px){
+					font-size: 0.8em;
+				}
 
 				&:first-child{
 					font-size: 1.3em;
+
+					@include device-width(950px){
+						font-size: 1.1em;
+					}
+					@include device-width(600px){
+						font-size: 0.9em;
+					}
 				}
 			}
-		}
-
-		.signature{
-			display: block;
-			margin: 3em 0;
-			text-align: center;
-		}
+		}// .article-content
 
 	}// #article
 
 	#related{
-		display: table;
-		table-layout: fixed;
-		width: 100%;
 
-		.col-1-2{
-			padding: 0;
+		&.match-block-container{
+			@include device-width(800px){
+				display: block;
+			}
+
+			.match-block-1-2{
+				@include device-width(800px){
+					display: block;
+					width: 100%;
+				}
+
+				.article-inner {
+					padding: 5% 10%;
+				}
+			}
 		}
 
 		article{
-			display: table-cell;
-			vertical-align: top;
-			width: 50%;
 			color: #fff;
 			background-color: $blue3;
 
 			&:first-child{
 				background-color: $green;
-			}
-		}
 
-		.article-inner{
-			padding: 3em;
-		}
+				.inner{
+					float: right;
+					margin-left: 10%;
+					padding-left: 0;
+
+					@include device-width(800px){
+						float: none;
+						margin: 0;
+						padding: 1em;
+					}
+				}
+			}
+		}// article
 
 		.related-image{
 			padding-top: 61%;
 			background-size: cover;
 		}
+
+		.inner{
+			max-width: 720px;
+			padding: 5%;
 		
-		.related-category{
-			font-size: 0.9em;
-			font-weight: 700;
-		}
+			.related-category{
+				font-size: 0.9em;
+				font-weight: 700;
+			}
 
-		.related-title{
-			margin: 0.5em 0 0 0;
-			font-size: 1.5em;
-		}
+			.related-title{
+				margin: 0.5em 0 0 0;
+				font-size: 1.5em;
+			}
 
-		.related-excerpt{
-			font-size: 0.9em;
-		}
+			.related-excerpt{
+				font-size: 0.9em;
+			}
+
+			@include device-width(950px){
+				font-size: 80%;
+			}
+
+			@include device-width(800px){
+				margin: 0;
+				padding: 1em;
+				font-size: 100%;
+			}
+
+			@include device-width(500px){
+				font-size: 80%;
+			}
+		}// .inner
 
 		.button{
 			margin-top: 1em;
 		}
-	}
+
+	}// #related
 
 }// #single
+
+// ==========================================================================
+// PAGE
+// ==========================================================================
+
+#page{
+	padding: 3em 0;
+
+	@include device-width(950px){
+		padding: 1em 0;
+	}
+	
+	%header{
+		margin-bottom: 1em;
+		line-height: 60px;		
+	}
+
+	#page-content{
+		float: left;
+
+		@include device-width(950px){
+			width: 100%;
+		}
+
+		header{
+			@extend %header;
+
+			h1{
+				margin: 0;
+				color: $red;
+				font-size: 2em;
+				font-weight: 400;
+			}
+		}
+
+		.inner{
+			max-width: 700px;
+
+			@include device-width(950px){
+				max-width: 100%;
+			}
+
+			@include device-width(750px){
+				font-size: 0.9em;
+			}
+
+			@include device-width(500px){
+				font-size: 0.8em;
+			}
+
+			p:first-child{
+				margin-top: 0;
+			}
+		}
+	}// #page-content
+
+	#page-menu{
+		float: right;
+		padding-left: 2em;
+
+		@include device-width(950px){
+			width: 100%;
+		}
+
+		header{
+			@extend %header;
+
+			h1{
+				margin: 0;
+				font-size: 1.25em;
+				font-weight: 400;
+			}
+
+			@include device-width(950px){
+				display: none;
+			}
+		}
+
+		.menu{
+			@extend %notalist;
+
+			@include device-width(950px){
+				margin-bottom: 2em;
+				border-bottom: 1px solid rgba(#333,0.2);
+			}
+
+			li.menu-item{
+				&.current-menu-item{
+					a{
+						color: $red;
+					}
+				}
+
+				@include device-width(950px){
+					display: inline-block;
+					margin-right: 1em;
+					margin-bottom: 0.5em;
+					font-size: 0.9em;
+
+					&:last-child{
+						margin-left: 0;
+					}
+				}
+
+				@include device-width(750px){
+					font-size: 0.8em;
+				}
+			}// li.menu-item
+
+			a{
+				color: #333;
+				@include single-transition(color,.3s);
+
+				&:hover{
+					color: $red;
+				}
+			}
+
+		}// .menu
+
+	}// #page-menu
+
+}// #page
+
+/* ==========================================================================
+   Map
+   ========================================================================== */
+
+.gm-style-iw {
+	top: 25px !important;
+	left: 25px !important;
+
+	p {
+		margin: 0 0 1em;
+		font-size: 16px;
+	}
+
+	h3 {
+		font-size: 26px;
+		margin: 0;
+		font-weight: normal;
+	}
+}
+
+#margate-map{
+	
+	#map-wrapper{
+		position: relative;
+
+		.map-title{
+			position: absolute;
+			top:0;
+			left: 3em;
+			max-width: 300px;
+			z-index: 9999;
+		}
+
+		#map{
+			position: relative;
+			height: 1000px;
+			margin: 0; 
+			padding: 0;
+
+			img{
+				max-width: inherit;
+			}
+		}// #map
+	}
+
+	#markers{
+		@extend %notalist;
+		display: none;
+
+		.match-block-container{
+			.inner{
+				max-width: 720px;
+				margin-left: 10%;
+				padding: 5% 5% 5% 0;
+			}
+		}
+
+		.marker:nth-child(even){
+			.content-wrap{
+				float: right;
+			}
+
+			.image{
+				@include translateX(-100%);
+			}
+		}
+	}// #markers	
+
+}// #margate-map
+

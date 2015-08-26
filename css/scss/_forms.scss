@@ -2,7 +2,6 @@
 // Form Styles
 // ==========================================================================
 
-
 input[type="text"],
 input[type="email"],
 input[type="url"],
@@ -22,6 +21,11 @@ textarea{
 	}
 }
 
+label{
+	display: inline-block;
+	margin-bottom: 0.5em;
+}
+
 textarea{
 	resize: vertical;
 }
@@ -30,14 +34,105 @@ textarea{
 // Forms
 // ==========================================================================
 
+#review{
+	input[type="text"],
+	input[type="email"],
+	input[type="url"],
+	input[type="password"],
+	textarea{
+		color: #333;
+		border: 3px solid rgba($red,.5);
+
+		&:focus{
+			border: 3px solid $red;
+			@include box-shadow(0 0 0 0);
+		}
+	}
+
+	label{
+		color: $red;
+		font-size: 0.8em;
+	}
+	
+	.gform_heading{
+		text-align: center;
+
+		.gform_title{
+			margin: 0 0 0.25em 0;
+			color: $red;
+			font-size: 2em;
+			font-weight: 400;	
+		}
+
+		.gform_description{
+			text-align: center;
+			font-size: 0.9em;
+		}
+
+	}// .gform_heading
+
+	ul.gfield_radio{
+		li{
+			display: inline-block;
+
+			label{
+				margin: 0;
+				font-size: 2em;
+				text-align: center;
+				border:1px solid transparent;
+				@include transition(all,.3s);
+				cursor: pointer;
+
+				i{
+					display: inline-block;
+					padding: 10px;
+					color: #fff;
+					overflow: hidden;
+					border: 3px solid transparent;
+					@include border-radius(100%);
+					@include transition(all, .3s);
+
+					&:after{
+						display: inline-block;
+						vertical-align: middle;
+					}
+
+					&.icon-sun{
+						background-color: $yellow;
+					}
+					&.icon-waves{
+						background-color: #2cdcf1;
+					}
+				}
+			}
+
+			input[type="radio"]{
+				display: none;
+
+				&:checked + label i{
+					border: 3px solid rgba(#333,0.1);
+				}
+			}			
+
+		}// li
+	}// ul.gfield_radio
+
+	button.submit{
+		color: $red;
+		border-color: $red;
+
+		&:hover{
+			color: #fff;
+			background-color: $red;
+		}
+	}
+
+}// #review
+
 #footer{
 	.form{
 		label{
 			display: none;
-		}
-
-		.gfield{
-			margin-top: 1em;
 		}
 	}
 }// #footer
@@ -56,11 +151,20 @@ textarea{
 
 .gform_body{
 
-	ul.gform_fields{
+	ul.gform_fields,
+	ul.gfield_radio{
 		@extend %notalist;
 	}
 
 	li.gfield{
+		margin-top: 1em;
+
+		&.no-label{
+			.gfield_label{
+				display: none;
+			}
+		}
+
 		.ginput_container{
 			.medium{
 				width: 100%;

@@ -23,6 +23,17 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin icon($icon){
+    @extend [class^="icon-"];
+    @extend .icon-#{$icon}:before !optional;
+}
+
+.signature{
+    display: block;
+    margin: 3em 0;
+    text-align: center;
+}
+
 // ==========================================================================
 // Base styles
 // ==========================================================================
@@ -34,6 +45,10 @@ html, body{
 body {
     line-height: 1.4;
     -webkit-font-smoothing: antialiased;
+
+    &.noscroll{
+        overflow: hidden;
+    }
 }
 
 ::-moz-selection {
@@ -169,4 +184,12 @@ video {
     font-size: 0.75em;
     font-style: italic;
     line-height: 1.1;
+}
+
+div.ppt {
+    display: none !important;
+}
+
+.hide {
+    display: none;
 }

@@ -1,9 +1,16 @@
+.signature {
+  display: block;
+  margin: 3em 0;
+  text-align: center; }
+
 html, body {
   min-height: 100% !important; }
 
 body {
   line-height: 1.4;
   -webkit-font-smoothing: antialiased; }
+  body.noscroll {
+    overflow: hidden; }
 
 ::-moz-selection {
   background: #b3d4fc;
@@ -126,9 +133,15 @@ video {
   font-style: italic;
   line-height: 1.1; }
 
+div.ppt {
+  display: none !important; }
+
+.hide {
+  display: none; }
+
 body {
   color: #333333;
-  font-size: 125%;
+  font-size: 115%;
   font-family: 'Aktiv Grotesk W01'; }
 
 a {
