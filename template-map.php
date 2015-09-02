@@ -49,7 +49,9 @@
 
 		<?php if( have_rows('new_content_row') ): ?>
 			<div id="az-content">
+				<?php $i = 0; ?>
 			    <?php while ( have_rows('new_content_row') ) : the_row(); ?>
+			    	
 			        <?php if( get_row_layout() == 'row' ): ?>
 
 							<?php if( have_rows('slide') ): ?>
@@ -70,7 +72,7 @@
 											<?php 
 												$image_src = wp_get_attachment_image_src( $image_id, 'full' ); 
 											 ?>
-											<a class="fancybox-thumb" rel="fancybox-thumb" href="<?php echo $image_src[0]; ?>" title="">
+											<a class="fancybox-thumb" rel="fancybox-thumb-<?php echo $i; ?>" href="<?php echo $image_src[0]; ?>" title="">
 										  		<?php echo wp_get_attachment_image($image_id, 'community-grid'); ?>									
 										  		<span class="icon"></span>
 										  	</a>
@@ -84,6 +86,7 @@
 
 
 			        <?php endif; ?>
+			        <?php $i++; ?>
 			    <?php endwhile; ?>
 		    </div>
 		<?php endif; ?>

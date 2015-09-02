@@ -15,7 +15,7 @@
 			this.map.init();
 			this.slider.init();
 
-			$("[rel='fancybox-thumb']").fancybox({
+			$(".fancybox-thumb").fancybox({
 				helpers : {
 					thumbs : true
 				},

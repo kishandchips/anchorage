@@ -268,11 +268,11 @@ a {
 
 @font-face {
   font-family: 'icomoon';
-  src: url("fonts/icomoon.eot?tb1as1");
-  src: url("fonts/icomoon.eot?#iefixtb1as1") format("embedded-opentype"), url("fonts/icomoon.woff2?tb1as1") format("woff2"), url("fonts/icomoon.ttf?tb1as1") format("truetype"), url("fonts/icomoon.woff?tb1as1") format("woff"), url("fonts/icomoon.svg?tb1as1#icomoon") format("svg");
+  src: url("fonts/icomoon.eot?-cf1pxb");
+  src: url("fonts/icomoon.eot?#iefix-cf1pxb") format("embedded-opentype"), url("fonts/icomoon.woff2?-cf1pxb") format("woff2"), url("fonts/icomoon.ttf?-cf1pxb") format("truetype"), url("fonts/icomoon.woff?-cf1pxb") format("woff"), url("fonts/icomoon.svg?-cf1pxb#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
-[class^="icon-"], .owl-nav .owl-next:before, .owl-nav .owl-prev:before, .request-a-book li.airbnb:before, .request-a-book li.owners:before, [class*=" icon-"] {
+[class^="icon-"], .owl-nav .owl-next:before, .owl-nav .owl-prev:before, #header .logo a:before, .request-a-book li.airbnb:before, .request-a-book li.owners:before, [class*=" icon-"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -283,6 +283,9 @@ a {
   /* Better Font Rendering =========== */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
+
+.icon-anchorage-logo:before, #header .logo a:before {
+  content: "\e60b"; }
 
 .icon-airbnb:before, .request-a-book li.airbnb:before {
   content: "\e609"; }
@@ -566,7 +569,7 @@ button {
     background-color: #28b992;
     border-bottom: none; }
 
-.button-outline {
+.button-outline, #az-content .owl-carousel .owl-nav .owl-next {
   padding: 0.5em 1em;
   color: #fb3000;
   font-size: 20px;
@@ -579,7 +582,7 @@ button {
   -webkit-transition: all, 0.3s;
   transition: all, 0.3s;
   display: inline-block; }
-  .button-outline:hover {
+  .button-outline:hover, #az-content .owl-carousel .owl-nav .owl-next:hover {
     border: 3px solid #2dcea2;
     color: #2dcea2; }
 
@@ -724,9 +727,9 @@ textarea {
   -webkit-animation-name: fadeOut;
   animation-name: fadeOut; }
 
-.owl-carousel .fadein {
-  -webkit-animation-name: fadein;
-  animation-name: fadein; }
+.owl-carousel .fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn; }
 
 @-webkit-keyframes fadeOut {
   0% {
@@ -738,12 +741,12 @@ textarea {
     opacity: 1; }
   100% {
     opacity: 0; } }
-@-webkit-keyframes fadein {
+@-webkit-keyframes fadeIn {
   0% {
     opacity: 0; }
   100% {
     opacity: 1; } }
-@keyframes fadein {
+@keyframes fadeIn {
   0% {
     opacity: 0; }
   100% {
@@ -1009,10 +1012,21 @@ body {
       #header .container {
         width: 100%;
         padding: 1em; } }
+  #header .logo {
+    float: left; }
+    #header .logo a {
+      display: inline-block;
+      width: 249px;
+      height: 58px;
+      color: #000;
+      font-size: 3em; }
+      @media only screen and (max-width: 500px) {
+        #header .logo a {
+          font-size: 2.5em; } }
   .home #header {
     background-color: rgba(0, 0, 0, 0.2); }
     .home #header .logo a {
-      background-image: url(../images/logo-w.png); }
+      color: #FFF; }
     .home #header nav a {
       color: #fff; }
       .home #header nav a:hover {
@@ -1022,19 +1036,6 @@ body {
         background-color: rgba(0, 0, 0, 0.2); } }
     .home #header #menu-toggle {
       color: #fff; }
-  #header .logo {
-    float: left; }
-    #header .logo a {
-      display: inline-block;
-      width: 249px;
-      height: 58px;
-      background-image: url(../images/logo-b.png);
-      background-repeat: no-repeat; }
-      @media only screen and (max-width: 500px) {
-        #header .logo a {
-          width: 200px;
-          background-size: contain;
-          background-position: center; } }
   #header nav {
     float: right; }
     @media only screen and (max-width: 1440px) {
@@ -1308,9 +1309,24 @@ body {
       margin-right: 2em; }
 
 #az-content .owl-dots {
-  display: block; }
-#az-content .owl-carousel .owl-nav {
   display: none; }
+#az-content .owl-carousel .owl-nav {
+  display: block;
+  top: 90%; }
+  #az-content .owl-carousel .owl-nav .owl-prev {
+    display: none; }
+  #az-content .owl-carousel .owl-nav .owl-next {
+    left: 5%;
+    width: 70px;
+    color: #FFF;
+    border-color: #FFF;
+    padding: 0.3em 1em 0.5em; }
+    #az-content .owl-carousel .owl-nav .owl-next:hover {
+      background: #FFF;
+      color: #000;
+      border-color: #FFF; }
+    #az-content .owl-carousel .owl-nav .owl-next:before {
+      content: 'Next'; }
 #az-content .owl-carousel .owl-item .slide .content, #az-content .owl-carousel .owl-item .slide .image {
   width: 50%;
   -moz-box-sizing: border-box;
@@ -1403,7 +1419,7 @@ body {
     padding: 3% 5%; }
   #az-content .owl-carousel:nth-child(2n+2) .owl-item .slide .image {
     float: left; }
-  #az-content .owl-carousel:nth-child(2n+2) .owl-dots {
+  #az-content .owl-carousel:nth-child(2n+2) .owl-nav .owl-next {
     right: 5%;
     left: auto; }
 #az-content .owl-carousel:nth-child(3n+3) {
@@ -1760,7 +1776,7 @@ body {
       font-size: 18px;
       color: #333333;
       line-height: 1.4; }
-    #apartment #margate-map #map-wrapper .map-title a.button-outline {
+    #apartment #margate-map #map-wrapper .map-title a.button-outline, #apartment #margate-map #map-wrapper .map-title #az-content .owl-carousel .owl-nav a.owl-next, #az-content .owl-carousel .owl-nav #apartment #margate-map #map-wrapper .map-title a.owl-next {
       margin-top: .5em; }
 
 #community #slider .valign, #community #slider #header #menu-toggle, #header #community #slider #menu-toggle, #community #slider .owl-controls .owl-nav, .owl-controls #community #slider .owl-nav {

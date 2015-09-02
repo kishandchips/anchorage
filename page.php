@@ -8,7 +8,7 @@
 
 					<div class="row">
 						
-						<div id="page-menu" class="col-1-3">
+<!-- 						<div id="page-menu" class="col-1-3">
 							<header>
 								<h1><?php the_title(); ?></h1>
 							</header>
@@ -16,7 +16,7 @@
 								$args = array('theme_location' => 'pages_menu', 'menu' => '', 'container' => '');
 								wp_nav_menu( $args );
 							?>	
-						</div><!-- #page-menu -->
+						</div> -->
 
 						<div id="page-content" class="col-2-3">
 							<header>

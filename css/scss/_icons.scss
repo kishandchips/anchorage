@@ -1,11 +1,11 @@
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?tb1as1');
-	src:url('fonts/icomoon.eot?#iefixtb1as1') format('embedded-opentype'),
-		url('fonts/icomoon.woff2?tb1as1') format('woff2'),
-		url('fonts/icomoon.ttf?tb1as1') format('truetype'),
-		url('fonts/icomoon.woff?tb1as1') format('woff'),
-		url('fonts/icomoon.svg?tb1as1#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-cf1pxb');
+	src:url('fonts/icomoon.eot?#iefix-cf1pxb') format('embedded-opentype'),
+		url('fonts/icomoon.woff2?-cf1pxb') format('woff2'),
+		url('fonts/icomoon.ttf?-cf1pxb') format('truetype'),
+		url('fonts/icomoon.woff?-cf1pxb') format('woff'),
+		url('fonts/icomoon.svg?-cf1pxb#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -24,6 +24,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-anchorage-logo:before {
+	content: "\e60b";
+}
 .icon-airbnb:before {
 	content: "\e609";
 }
