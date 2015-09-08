@@ -55,7 +55,7 @@
 			        <?php if( get_row_layout() == 'row' ): ?>
 
 							<?php if( have_rows('slide') ): ?>
-								<div class="owl-carousel" data-loop="false">
+								<div class="owl-carousel" data-loop="true">
 
 								<?php while( have_rows('slide') ): the_row(); 
 										$image_id = get_sub_field('image');

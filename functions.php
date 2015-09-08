@@ -1,6 +1,11 @@
 <?php
 define('THEME_NAME', '');
+
+$template_directory = get_template_directory();
+
 $template_directory_uri = get_template_directory_uri();
+
+require( $template_directory . '/inc/classes/bfi-thumb.php' );
 
 // Enable Features
 	add_theme_support( 'post-thumbnails' );
@@ -191,4 +196,16 @@ function tax_cat_active( $output, $args ) {
   }
 
   return $output;
+}
+
+if(!function_exists('get_image')) {
+	function get_image($id, $size = 'thumbnail'){
+		
+		if( is_array($size) ) $size['bfi_thumb'] = true;
+
+		$image = wp_get_attachment_image_src($id, $size);
+
+		if( !empty($image[0]) ) return $image[0];
+		return;
+	}
 }

@@ -8,12 +8,17 @@
 	<div id="apartment">
 		<?php $images = get_field('images'); ?>
 		<?php if($images): ?>
-			<header id="sliderke" class="owl-carousel" data-loop="false">
+			<header id="sliderke" class="owl-carousel" data-loop="true" data-nav="true">
 
 				<?php foreach ($images as $image): ?>
+					<?php 
+						$img_src = $image['url'];
+						$image_size = array('width' => 1680, 'height' => 850);
+						$image = bfi_thumb($img_src, $image_size);
+					 ?>
 				<div class="slide">
-					<a href="<?php echo $image['sizes']['slider']; ?>" rel='fancybox-thumb'>
-						<img src="<?php echo $image['sizes']['slider']; ?>" alt=""> 
+					<a href="<?php echo $img_src; ?>" class="fancybox-thumb" rel="fancybox-thumb">
+						<img src="<?php echo $image; ?>" alt=""> 
 						<span class="icon"></span>
 					</a>
 				</div>

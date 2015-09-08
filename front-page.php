@@ -7,11 +7,14 @@
 			<div class="owl-carousel hero" data-autoplay="true" data-loop="true">
 
 			<?php while( have_rows('slides') ): the_row(); 
-					$image = get_sub_field('image');
+					$image_full = get_sub_field('image');
+					$img_src = $image_full['url'];
+					$image_size = array('width' => 1680, 'height' => 850);
+					$image = bfi_thumb($img_src, $image_size);
 				?>
 
 				<div class="slide">
-				  	<img src="<?php echo $image[url]; ?>" alt="">
+				  	<img src="<?php echo $image; ?>" alt="">
 					<div class="valign">
 						<h2 class="hero-text">
 							<?php _e(the_sub_field('hero_headline'), 'anchorage'); ?>

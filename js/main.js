@@ -14,23 +14,8 @@
 			this.about.init();
 			this.map.init();
 			this.slider.init();
+			this.fancy.init();
 
-			$(".fancybox-thumb").fancybox({
-				helpers : {
-					thumbs : true
-				},
-				theme: 'dark',
-				openEffect : 'fade',
-				closeEffect	: 'fade',				
-				prevEffect		: 'fade',
-				nextEffect		: 'fade'				
-			});
-
-			$("a.fancybox, .fancybox a").fancybox({
-				minHeight: 340,
-				openEffect : 'fade',
-				closeEffect	: 'fade'
-			});
 
 			// if($('.sticky-wrapper').length) {
 			// 	if(main.w.width() > 899) {
@@ -140,6 +125,27 @@
 				});
 			}
 		},// main.slider
+
+		fancy:{
+			init: function() {
+				$(".owl-item:not(.cloned) .fancybox-thumb").fancybox({
+					helpers : {
+						thumbs : true
+					},
+					theme: 'dark',
+					openEffect : 'fade',
+					closeEffect	: 'fade',				
+					prevEffect		: 'fade',
+					nextEffect		: 'fade'				
+				});
+
+				$("a.fancybox, .fancybox a").fancybox({
+					minHeight: 340,
+					openEffect : 'fade',
+					closeEffect	: 'fade'
+				});				
+			}
+		},
 
 		map:{
 			element: $('#map'),
