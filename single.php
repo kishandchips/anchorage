@@ -29,9 +29,10 @@
 						} 
 
 					$args=array(
-					'category__in' => $category_ids,
-					// 'post__not_in' => array($post->ID),
-					'posts_per_page' => 2, // Number of related posts that will be displayed.
+						'category__in' => $category_ids,
+						// 'post__not_in' => array($post->ID),
+						'posts_per_page' => 2, 
+						'post__not_in' => array($post->ID)
 					);
 
 					$related = new wp_query( $args );

@@ -792,6 +792,10 @@ body.modal-open{
 		text-align: center;
 		padding: 30px 0;
 
+		span {
+			display: block;
+		}
+
 		&:first-child {
 			border-bottom: 1px solid #c0c0c0;
 		}
@@ -801,20 +805,21 @@ body.modal-open{
 			padding: 0.5em 3em;
 		}
 
-		&:before {
+		span:before {
 		    font-size: 30px;
+		    margin-right: 10px;
     		vertical-align: middle;
 		}
 
 		&.airbnb {
-			&:before {
+			span:before {
 				@include icon('airbnb');
 				color: #ff5a5f;
 			}
 		}
 
 		&.owners {
-			&:before {
+			span:before {
 				@include icon('owners');
 				color: #046cb6;
 			}

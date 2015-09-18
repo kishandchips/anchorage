@@ -35,7 +35,7 @@
 			<a href="<?php the_field('airbnb_listing_url', 'options'); ?>" class="btn" target="_blank">Request a book</a>
 		</li>
 		<li class="owners">
-			<span>Book with Airbnb</span>
+			<span>Book with Owners Direct</span>
 			<a href="<?php the_field('owners_direct_listing_url', 'options'); ?>" class="btn" target="_blank">Request a book</a>
 		</li>			
 	</ul>

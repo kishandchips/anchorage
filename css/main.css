@@ -272,7 +272,7 @@ a {
   src: url("fonts/icomoon.eot?#iefix-cf1pxb") format("embedded-opentype"), url("fonts/icomoon.woff2?-cf1pxb") format("woff2"), url("fonts/icomoon.ttf?-cf1pxb") format("truetype"), url("fonts/icomoon.woff?-cf1pxb") format("woff"), url("fonts/icomoon.svg?-cf1pxb#icomoon") format("svg");
   font-weight: normal;
   font-style: normal; }
-[class^="icon-"], .owl-nav .owl-next:before, .owl-nav .owl-prev:before, #header .logo a:before, .request-a-book li.airbnb:before, .request-a-book li.owners:before, [class*=" icon-"] {
+[class^="icon-"], .owl-nav .owl-next:before, .owl-nav .owl-prev:before, #header .logo a:before, .request-a-book li.airbnb span:before, .request-a-book li.owners span:before, [class*=" icon-"] {
   font-family: 'icomoon';
   speak: none;
   font-style: normal;
@@ -287,10 +287,10 @@ a {
 .icon-anchorage-logo:before, #header .logo a:before {
   content: "\e60b"; }
 
-.icon-airbnb:before, .request-a-book li.airbnb:before {
+.icon-airbnb:before, .request-a-book li.airbnb span:before {
   content: "\e609"; }
 
-.icon-owners:before, .request-a-book li.owners:before {
+.icon-owners:before, .request-a-book li.owners span:before {
   content: "\e60a"; }
 
 .icon-arrow-icon-left:before, .owl-nav .owl-prev:before {
@@ -1471,17 +1471,20 @@ body {
   .request-a-book li {
     text-align: center;
     padding: 30px 0; }
+    .request-a-book li span {
+      display: block; }
     .request-a-book li:first-child {
       border-bottom: 1px solid #c0c0c0; }
     .request-a-book li .btn, .request-a-book li .error404 #searchsubmit, .error404 .request-a-book li #searchsubmit {
       margin: .5em 0;
       padding: 0.5em 3em; }
-    .request-a-book li:before {
+    .request-a-book li span:before {
       font-size: 30px;
+      margin-right: 10px;
       vertical-align: middle; }
-    .request-a-book li.airbnb:before {
+    .request-a-book li.airbnb span:before {
       color: #ff5a5f; }
-    .request-a-book li.owners:before {
+    .request-a-book li.owners span:before {
       color: #046cb6; }
 
 #home .owl-carousel .slide:after {

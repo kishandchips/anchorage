@@ -141,6 +141,8 @@
 
 				$("a.fancybox, .fancybox a").fancybox({
 					minHeight: 340,
+					autoWidth : true,
+					minWidth : 380,
 					openEffect : 'fade',
 					closeEffect	: 'fade'
 				});				

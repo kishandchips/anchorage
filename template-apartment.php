@@ -8,7 +8,7 @@
 	<div id="apartment">
 		<?php $images = get_field('images'); ?>
 		<?php if($images): ?>
-			<header id="sliderke" class="owl-carousel" data-loop="true" data-nav="true">
+			<header id="sliderke" class="owl-carousel" data-loop="true" data-nav="true" data-autoplay="true">
 
 				<?php foreach ($images as $image): ?>
 					<?php 
