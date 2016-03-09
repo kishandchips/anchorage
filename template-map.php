@@ -71,9 +71,10 @@
 										<div class="image">
 											<?php 
 												$image_src = wp_get_attachment_image_src( $image_id, 'full' ); 
+												$image_src_small = wp_get_attachment_image_src( $image_id, 'community-grid' );
 											 ?>
-											<a class="fancybox-thumb" rel="fancybox-thumb-<?php echo $i; ?>" href="<?php echo $image_src[0]; ?>" title="">
-										  		<?php echo wp_get_attachment_image($image_id, 'community-grid'); ?>									
+											<a class="fancybox-thumb" rel="fancybox-thumb-<?php echo $i; ?>" href="<?php echo $image_src[0]; ?>" title="" style="background-image: url(<?php echo $image_src_small[0]; ?>); ">
+										  		<?php // echo wp_get_attachment_image($image_id, 'community-grid'); ?>									
 										  		<span class="icon"></span>
 										  	</a>
 										</div>

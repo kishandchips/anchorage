@@ -55,7 +55,11 @@
 				
 				<article class="match-block-container">
 					
-					<div class="content-wrap match-block-1-2">
+					<div class="content-wrap">
+
+					<div class="article-image"  style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
+					</div>
+					
 
 						<div class="inner">
 								<div class="article-category">
@@ -77,8 +81,6 @@
 
 					</div><!-- .content-wrap -->
 
-					<div class="article-image match-block-1-2"  style="background-image: url(<?php echo wp_get_attachment_url(get_post_thumbnail_id($post->ID)); ?>)">
-					</div>
 
 				</article>
 

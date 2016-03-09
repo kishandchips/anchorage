@@ -3,19 +3,19 @@
 	<footer id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="right col-1-2">
+				<div class="col-1-2">
 					<h4><h4><?php _e("Get in touch", 'anchorage'); ?></h4></h4>
 					<div class="form">
 						<?php echo do_shortcode('[gravityform id=1 title=false description=true ajax=true ]' ); ?>	
 					</div>
 				</div>
 				<nav class="col-1-2">
-					<h4><?php _e("Useful Links", 'anchorage'); ?></h4>
+<!-- 					<h4><?php _e("Useful Links", 'anchorage'); ?></h4>
 					<?php 
 						$args = array('theme_location' => 'footer_main', 'menu' => '', 'container' => '');
 						wp_nav_menu( $args );
 					?>
-				</nav>			
+ -->				</nav>			
 			</div>
 		</div>
 		<div class="credits">
@@ -32,11 +32,11 @@
 	<ul class="request-a-book">
 		<li class="airbnb">
 			<span>Book with Airbnb</span>
-			<a href="<?php the_field('airbnb_listing_url', 'options'); ?>" class="btn" target="_blank">Request a book</a>
+			<a href="<?php the_field('airbnb_listing_url', 'options'); ?>" class="btn" target="_blank">Request a booking</a>
 		</li>
 		<li class="owners">
 			<span>Book with Owners Direct</span>
-			<a href="<?php the_field('owners_direct_listing_url', 'options'); ?>" class="btn" target="_blank">Request a book</a>
+			<a href="<?php the_field('owners_direct_listing_url', 'options'); ?>" class="btn" target="_blank">Request a booking</a>
 		</li>			
 	</ul>
 </div>	

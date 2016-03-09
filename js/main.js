@@ -120,7 +120,8 @@
 					    animateOut: 'fadeOut',
 					    animateIn: 'fadeIn',
 					    autoplay: $carousel.data("autoplay"),
-						autoplayHoverPause: false
+						autoplayHoverPause: false,
+						autoHeight : true,
 					});					
 				});
 			}
@@ -154,9 +155,10 @@
 
 			init: function(){
 				var element = main.map.element;
+				var infowindow;
 				if(!element.length){return;}
 
-			    main.w.on('load',main.map.setup());
+			    main.w.on('load',main.map.setup());			    
 			},
 
 			setup:function(){
@@ -187,11 +189,33 @@
 				  map.setCenter(margate);
 				});
 
-				main.map.markers(map);
+				main.map.markers(map);			
+
+
 			},// map.setup
 
 			markers: function(map){
 				markers = [];
+				var infowindow = new google.maps.InfoWindow({
+		            	maxWidth: 446,
+		            	padding: 0
+				});	  
+
+				google.maps.event.addListener(infowindow, 'domready', function() {
+
+					var iwOuter = $('.gm-style-iw');
+					var iwBackground = iwOuter.prev();
+					var iwCloseBtn = iwOuter.next();
+
+					iwCloseBtn.css({
+					  top: '14px'
+					  });
+
+					iwCloseBtn.mouseout(function(){
+					  $(this).css({opacity: '1'});
+					});				   
+
+				});					              	
 
 				$('#markers li').each(function(){
 					var el = $(this),
@@ -207,6 +231,7 @@
 					    icon: icon,
 					});
 
+
 					markers.push(marker);
 
 					el.on('click', function(){
@@ -214,29 +239,17 @@
 							markers[index].setAnimation(null);	
 						})
 							marker.setAnimation(google.maps.Animation.BOUNCE);
-					});
-
-		            var infowindow = new google.maps.InfoWindow({
-		            	maxWidth: 446,
-		            	padding: 0            	
-		            });
-
-					// google.maps.event.addListener(infowindow, 'domready', function() {
-					//    var iwOuter = $('.gm-style-iw');
-					//    var iwBackground = iwOuter.prev();
-					//    iwBackground.children(':nth-child(2)').css({'display' : 'none'});
-					//    iwBackground.children(':nth-child(4)').css({'display' : 'none'});
-					// });		            
-
+					});		            	            
 
 		            google.maps.event.addListener(marker, 'click', (function(marker, content, infowindow) {		                
-		                return function() {		                	
-		                    infowindow.setContent(content);
-		                    infowindow.close();
+		                return function() {	
+					        if (infowindow) {
+					            infowindow.close();
+					        }		                	                	
+							infowindow.setContent(content);	                	
 		                    infowindow.open(map, marker);
 		                };
 		            })(marker, content, infowindow));
-
 
 				});
 
