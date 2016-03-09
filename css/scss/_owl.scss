@@ -124,6 +124,10 @@
         .home &, .blog & {
             display: none;
         }
+
+        @include device-width(500px) {
+            display: none;
+        }
     }
 }
 

@@ -835,6 +835,9 @@ textarea {
     cursor: pointer; }
     .home .owl-carousel .owl-stage-outer .icon, .blog .owl-carousel .owl-stage-outer .icon {
       display: none; }
+    @media only screen and (max-width: 500px) {
+      .owl-carousel .owl-stage-outer .icon {
+        display: none; } }
 
 .owl-carousel .owl-stage-outer
 .owl-controls .owl-nav {
@@ -1371,6 +1374,9 @@ body {
     color: #FFF;
     border-color: #FFF;
     padding: 0.3em 1em 0.5em; }
+    @media only screen and (max-width: 500px) {
+      #az-content .owl-carousel .owl-nav .owl-next {
+        display: none; } }
     #az-content .owl-carousel .owl-nav .owl-next:hover {
       background: #FFF;
       color: #000;
